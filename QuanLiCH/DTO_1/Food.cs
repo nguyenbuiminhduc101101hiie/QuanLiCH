@@ -17,7 +17,7 @@ namespace QuanLiCH.DTO_1
 
         private float price;
 
-        public Food(int id,string name ,int categoryid,float price)
+        public Food(int id,string name, int categoryid,float price)
         {
             this.ID = id;
             this.Name = name;
