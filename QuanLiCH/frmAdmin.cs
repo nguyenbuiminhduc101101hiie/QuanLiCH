@@ -95,7 +95,7 @@ namespace QuanLiCH
                 childForm.Show();
             }
             catch { }
-            lbTitleBar.Text = childForm.Text;
+            lbTitleBar.Text = childForm.Text; 
         }
 
         private void btnBill_Click(object sender, EventArgs e)
