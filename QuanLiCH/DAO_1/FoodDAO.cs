@@ -41,7 +41,7 @@ namespace QuanLiCH.DAO_1
         {
             List<Food> list = new List<Food>();
 
-            string query = "Select f.id, f.name, fc.name, f.price from Food f inner join FoodCategory fc on f.idCategory = fc.id";
+            string query = "Select * from Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
