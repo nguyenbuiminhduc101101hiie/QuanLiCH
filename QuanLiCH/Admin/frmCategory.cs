@@ -111,25 +111,6 @@ namespace QuanLiCH.Admin
         {
             int id = Convert.ToInt32(txbCategoryID.Text);
 
-
-            if (CategoryDAO.Instance.DeleteCategory(id))
-            {
-                MessageBox.Show("Xóa danh mục thành công ");
-                LoadListCategory();
-                if (deleteCategory != null)
-                    deleteCategory(this, new EventArgs());
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi khi sửa thực hiện");
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-            int id = Convert.ToInt32(txbCategoryID.Text);
-
             string name = cbCategoryName.Text;
 
             if (CategoryDAO.Instance.UpdateCategory(id, name))
@@ -143,6 +124,25 @@ namespace QuanLiCH.Admin
             {
                 MessageBox.Show("Có lỗi khi sửa thực hiện");
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txbCategoryID.Text);
+
+
+            if (CategoryDAO.Instance.DeleteCategory(id))
+            {
+                MessageBox.Show("Xóa danh mục thành công ");
+                LoadListCategory();
+                if (deleteCategory != null)
+                    deleteCategory(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi khi sửa thực hiện");
+            }
+
         }
         private event EventHandler insertCategory;
 
