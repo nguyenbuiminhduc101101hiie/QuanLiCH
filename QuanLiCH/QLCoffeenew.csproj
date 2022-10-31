@@ -285,12 +285,6 @@
     <Compile Include="fAccoutProfile1.Designer.cs">
       <DependentUpon>fAccoutProfile1.cs</DependentUpon>
     </Compile>
-    <Compile Include="fInfoApp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fInfoApp.Designer.cs">
-      <DependentUpon>fInfoApp.cs</DependentUpon>
-    </Compile>
     <Compile Include="fLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,9 +320,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fAccoutProfile1.resx">
       <DependentUpon>fAccoutProfile1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fInfoApp.resx">
-      <DependentUpon>fInfoApp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>

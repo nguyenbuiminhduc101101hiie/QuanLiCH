@@ -496,7 +496,6 @@ C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.Adm
 C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.Admin.frmCategory.resources
 C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.Admin.frmFood.resources
 C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.fAccoutProfile1.resources
-C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.fInfoApp.resources
 C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.fLogin.resources
 C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.frmAdmin.resources
 C:\Học Tập\Do An Co So\Final Github\QuanLiCH\QuanLiCH\obj\Debug\QuanLiCH.fTableManager.resources
