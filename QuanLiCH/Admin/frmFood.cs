@@ -56,6 +56,7 @@ namespace QuanLiCH.Admin
             txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
+           nmFoodQuantity.DataBindings.Add(new Binding("vulue", dtgvFood.DataSource, "quantity", true, DataSourceUpdateMode.Never));
         }
 
         void LoadListFood()
@@ -78,8 +79,10 @@ namespace QuanLiCH.Admin
             string name = txbFoodName.Text;
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nmFoodPrice.Value;
+            int quantity = (int)nmFoodQuantity.Value;
+            
 
-            if (FoodDAO.Instance.InsertFood(name, categoryID, price))
+            if (FoodDAO.Instance.InsertFood(name, categoryID, price,quantity))
             {
                 MessageBox.Show("Thêm món thành công");
                 LoadListFood();
@@ -98,8 +101,9 @@ namespace QuanLiCH.Admin
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nmFoodPrice.Value;
             int id = Convert.ToInt32(txbFoodID.Text);
+            int quantity = (int)nmFoodQuantity.Value;
 
-            if (FoodDAO.Instance.UpdateFood(id, name, categoryID, price))
+            if (FoodDAO.Instance.UpdateFood(id, name, categoryID, price,quantity))
             {
                 MessageBox.Show("Sửa món thành công");
                 LoadListFood();
@@ -190,6 +194,11 @@ namespace QuanLiCH.Admin
         }
 
         private void lb1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtgvFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

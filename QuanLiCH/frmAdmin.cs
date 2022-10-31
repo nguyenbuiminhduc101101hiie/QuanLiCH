@@ -90,7 +90,11 @@ namespace QuanLiCH
             this.pnDesktopPane.Controls.Add(childForm);
             this.pnDesktopPane.Tag = childForm;
             childForm.BringToFront();
-            childForm.Show();
+            try
+            {
+                childForm.Show();
+            }
+            catch { }
             lbTitleBar.Text = childForm.Text;
         }
 
