@@ -56,7 +56,7 @@ namespace QuanLiCH.Admin
             txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
-            nmFoodQuantity.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "quantity", true, DataSourceUpdateMode.Never));
+           // nmFoodQuantity.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "quantity", true, DataSourceUpdateMode.Never));
         }
 
         void LoadListFood()
