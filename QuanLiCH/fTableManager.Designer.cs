@@ -60,12 +60,6 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lblHt2 = new System.Windows.Forms.Label();
-            this.lblHt1 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.lblBc1 = new System.Windows.Forms.Label();
-            this.lblBc2 = new System.Windows.Forms.Label();
             this.lblGiupdo = new System.Windows.Forms.Label();
             this.lblBanhang = new System.Windows.Forms.Label();
             this.lblThietlap = new System.Windows.Forms.Label();
@@ -80,8 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmFoodCout)).BeginInit();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -390,8 +382,6 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.groupBox7);
-            this.panel4.Controls.Add(this.groupBox6);
             this.panel4.Controls.Add(this.btnLogout);
             this.panel4.Controls.Add(this.btnRename);
             this.panel4.Controls.Add(this.panel6);
@@ -400,80 +390,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(270, 608);
             this.panel4.TabIndex = 7;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox7.Controls.Add(this.lblHt2);
-            this.groupBox7.Controls.Add(this.lblHt1);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(10, 456);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox7.Size = new System.Drawing.Size(250, 120);
-            this.groupBox7.TabIndex = 6;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Hỗ Trợ";
-            // 
-            // lblHt2
-            // 
-            this.lblHt2.AutoSize = true;
-            this.lblHt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHt2.Location = new System.Drawing.Point(16, 61);
-            this.lblHt2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHt2.Name = "lblHt2";
-            this.lblHt2.Size = new System.Drawing.Size(83, 15);
-            this.lblHt2.TabIndex = 16;
-            this.lblHt2.Text = "2 Liên hệ IT";
-            // 
-            // lblHt1
-            // 
-            this.lblHt1.AutoSize = true;
-            this.lblHt1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHt1.Location = new System.Drawing.Point(16, 28);
-            this.lblHt1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHt1.Name = "lblHt1";
-            this.lblHt1.Size = new System.Drawing.Size(144, 15);
-            this.lblHt1.TabIndex = 15;
-            this.lblHt1.Text = "1 Hướng dẫn sử dụng";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox6.Controls.Add(this.lblBc1);
-            this.groupBox6.Controls.Add(this.lblBc2);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(10, 288);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(250, 163);
-            this.groupBox6.TabIndex = 5;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Báo Cáo";
-            // 
-            // lblBc1
-            // 
-            this.lblBc1.AutoSize = true;
-            this.lblBc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBc1.Location = new System.Drawing.Point(10, 29);
-            this.lblBc1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBc1.Name = "lblBc1";
-            this.lblBc1.Size = new System.Drawing.Size(174, 15);
-            this.lblBc1.TabIndex = 17;
-            this.lblBc1.Text = "1 Doanh thu trong tháng 5";
-            // 
-            // lblBc2
-            // 
-            this.lblBc2.AutoSize = true;
-            this.lblBc2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBc2.Location = new System.Drawing.Point(10, 55);
-            this.lblBc2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBc2.Name = "lblBc2";
-            this.lblBc2.Size = new System.Drawing.Size(150, 15);
-            this.lblBc2.TabIndex = 16;
-            this.lblBc2.Text = "2 Công nợ khách hàng";
             // 
             // lblGiupdo
             // 
@@ -600,10 +516,6 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -649,11 +561,5 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label lblHt2;
-        private System.Windows.Forms.Label lblHt1;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label lblBc1;
-        private System.Windows.Forms.Label lblBc2;
     }
 }
