@@ -9,45 +9,48 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLiCH.DTO_1;
 using MetroFramework.Forms;
+using static System.IdentityModel.Tokens.SecurityTokenHandlerCollectionManager;
+using System.IO;
+using System.Windows.Shapes;
+using System.Windows;
+using Application = System.Windows.Forms.Application;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 
 namespace QuanLiCH
 {
     public partial class fLogin : MetroForm
     {
+
+
         public fLogin()
         {
             InitializeComponent();
-            txtPassWord.UseSystemPasswordChar = true;
-            if (Properties.Settings.Default.UserName != null)
-            {
-                txtUserName.Text = Properties.Settings.Default.UserName;
-                txtPassWord.Text = Properties.Settings.Default.UserPass;
-            }
         }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string userName = txtUserName.Text;
             string passWord = txtPassWord.Text;
-
-
-
             if (Login(userName, passWord))
             {
                 Account loginAccount = AccountDAO.Instance.GetAccountByUserName(userName);
                 fTableManager f = new fTableManager(loginAccount);
+                SavePassword();
                 this.Hide();
                 f.ShowDialog();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
+                System.Windows.MessageBox.Show("Sai tên tài khoản hoặc mật khẩu!");
             }
             bool Login(string username, string password)
             {
                 return AccountDAO.Instance.Login(userName, passWord);
             }
+
+
 
         }
 
@@ -58,6 +61,7 @@ namespace QuanLiCH
 
         private void chkShowpass_CheckedChanged(object sender, EventArgs e)
         {
+
             if (chkShowpass.Checked)
             {
                 txtPassWord.UseSystemPasswordChar = false;
@@ -66,20 +70,122 @@ namespace QuanLiCH
             {
                 txtPassWord.UseSystemPasswordChar = true;
             }
+
         }
 
-        private void checkBox1_rmaccount(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (chkrmAccount.Checked)
+            Application.Exit();
+        }
+
+        private void fLogin_Load(object sender, EventArgs e)
+        {
+            txtPassWord.UseSystemPasswordChar = true;
+        }
+
+        private void chksavepass_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUserName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
             {
-                Properties.Settings.Default.UserName = txtUserName.Text;
-                Properties.Settings.Default.UserPass = txtPassWord.Text;
-                Properties.Settings.Default.Save();
+                btnLogin_Click(sender, e);
             }
-            else {
-                Properties.Settings.Default.UserName = " ";
-                Properties.Settings.Default.UserPass = " ";
-                Properties.Settings.Default.Save();
+        }
+
+        private void SavePassword()
+        {
+            try
+            {
+
+                if (chksavepass.Checked)
+                {
+                    String path = Application.StartupPath + @"\Savepassword.txt"; //@"C:\Học Tập\Do An Co So\Final\QuanLiCH\QuanLiCH\Savepassword.txt";
+                    try
+                    {
+                        using (StreamWriter sr = new StreamWriter(path))
+                            sr.WriteLine(txtUserName.Text + ";" + txtPassWord.Text);
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+
+
+                }
+
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                String pathsp = Application.StartupPath + @"\Savepassword.txt";// @"C:\Học Tập\Do An Co So\Final\QuanLiCH\QuanLiCH\Savepassword.txt";
+                if (!File.Exists(pathsp))
+                {
+
+                }
+
+                StreamReader sr = new StreamReader(pathsp);
+
+                String rf = sr.ReadLine();
+                String[] rfsplit;
+                try
+                {
+                    String[] spearator = { ";" };
+                    Int32 count = 2;
+                    rfsplit = rf.Split(spearator, count, StringSplitOptions.RemoveEmptyEntries);
+
+                    if ((txtUserName.Text) == rfsplit[0])
+                    {
+                        txtPassWord.Text = rfsplit[1];
+                    }
+                    else
+                    {
+                        txtPassWord.Text = "";
+                    }
+
+
+                }
+                catch
+                {
+
+                }
+                sr.Close();
+            }
+            catch
+            {
+
+            }
+
+
+        }
+
+        private void txtPassWord_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void txtPassWord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.Equals(Convert.ToChar(13)))
+            {
+                btnLogin_Click(sender, e);
             }
         }
     }
