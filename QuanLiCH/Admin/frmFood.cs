@@ -56,7 +56,7 @@ namespace QuanLiCH.Admin
             txbFoodName.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Name", true, DataSourceUpdateMode.Never));
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
-           // nmFoodQuantity.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "quantity", true, DataSourceUpdateMode.Never));
+            nmFoodQuantity.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Quantity", true, DataSourceUpdateMode.Never));
         }
 
         void LoadListFood()
@@ -134,10 +134,6 @@ namespace QuanLiCH.Admin
             }
         }
 
-        private void btnView_Click(object sender, EventArgs e)
-        {
-
-        }
         private event EventHandler insertFood;
         public event EventHandler InsertFood
         {
@@ -191,16 +187,6 @@ namespace QuanLiCH.Admin
         private void btnSreachFood_Click_1(object sender, EventArgs e)
         {
             foodList.DataSource = SearchFoodByName(txbSreachFoodName.Text);
-        }
-
-        private void lb1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtgvFood_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

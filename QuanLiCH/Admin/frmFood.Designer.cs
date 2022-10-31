@@ -72,7 +72,6 @@
             this.dtgvFood.RowHeadersWidth = 51;
             this.dtgvFood.Size = new System.Drawing.Size(806, 171);
             this.dtgvFood.TabIndex = 0;
-            this.dtgvFood.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvFood_CellContentClick);
             // 
             // panel4
             // 
@@ -270,7 +269,6 @@
             this.lb1.Size = new System.Drawing.Size(94, 28);
             this.lb1.TabIndex = 6;
             this.lb1.Text = "Thức Ăn";
-            this.lb1.Click += new System.EventHandler(this.lb1_Click);
             // 
             // panel1
             // 
