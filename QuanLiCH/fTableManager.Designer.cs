@@ -60,14 +60,14 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblGiupdo = new System.Windows.Forms.Label();
+/*            this.lblGiupdo = new System.Windows.Forms.Label();
             this.lblBanhang = new System.Windows.Forms.Label();
             this.lblThietlap = new System.Windows.Forms.Label();
             this.lblHethong = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();*/
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel2.SuspendLayout();
@@ -393,7 +393,7 @@
             // 
             // lblGiupdo
             // 
-            this.lblGiupdo.AutoSize = true;
+/*            this.lblGiupdo.AutoSize = true;
             this.lblGiupdo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGiupdo.Location = new System.Drawing.Point(886, 6);
             this.lblGiupdo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -473,21 +473,21 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 27);
             this.button1.TabIndex = 15;
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = true;*/
             // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 637);
-            this.Controls.Add(this.lblGiupdo);
+/*            this.Controls.Add(this.lblGiupdo);
             this.Controls.Add(this.lblBanhang);
             this.Controls.Add(this.lblThietlap);
             this.Controls.Add(this.lblHethong);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button1);*/
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.txbTotalPrice);
