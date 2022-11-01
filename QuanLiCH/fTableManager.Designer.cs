@@ -553,13 +553,13 @@
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblGiupdo;
+/*        private System.Windows.Forms.Label lblGiupdo;
         private System.Windows.Forms.Label lblBanhang;
         private System.Windows.Forms.Label lblThietlap;
         private System.Windows.Forms.Label lblHethong;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button1;*/
     }
 }
