@@ -23,15 +23,16 @@ namespace QuanLiCH.DAO_1
         public static int TableHeight = 95; //        Tạo chiều rộng Button
         private  TableDAO() { }
 
-        public void SwitchTable(int id1, int id2)
-        {
-            DataProvider.Instance.ExecuteQuery("USP_SwitchTabel @idTable1 , @idTabel2", new object[] { id1, id2 });
-        }
+        //public void SwitchTable(int id1, int id2)
+        //{
+        //    DataProvider.Instance.ExecuteQuery("USP_SwitchTabel @idTable1 , @idTabel2", new object[] { id1, id2 });
+        //}
         public List<Table>  LoadTableList() // Tạo đanh sách bàn ăn
         {
             List<Table> tableList = new List<Table>();
+            string query1 = "Select * From Food";
 
-            DataTable data = DataProvider.Instance.ExecuteQuery("USP_GetTableList");
+            DataTable data = DataProvider.Instance.ExecuteQuery(query1);
 
             foreach (DataRow item in data.Rows)
             {
@@ -45,7 +46,7 @@ namespace QuanLiCH.DAO_1
         {
             List<Table> list = new List<Table>();
 
-            string query = "Select * From TableFood";
+            string query = "Select * From Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
@@ -57,22 +58,22 @@ namespace QuanLiCH.DAO_1
 
             return list;
         }
-        public Table GetTableByID(int id)
-        {
-            Table category = null;
+        //public Table GetTableByID(int id)
+        //{
+        //    Table category = null;
 
-            List<Table> list = new List<Table>();
+        //    List<Table> list = new List<Table>();
 
-            string query = "select * from TableFood where id = " + id;
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-            foreach (DataRow item in data.Rows)
-            {
-                category = new Table(item);
-                list.Add(category);
+        //    string query = "select * from TableFood where id = " + id;
+        //    DataTable data = DataProvider.Instance.ExecuteQuery(query);
+        //    foreach (DataRow item in data.Rows)
+        //    {
+        //        category = new Table(item);
+        //        list.Add(category);
 
-            }
-            return category;
-        }
+        //    }
+        //    return category;
+        //}
     }
     
 }

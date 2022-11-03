@@ -60,14 +60,6 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-/*            this.lblGiupdo = new System.Windows.Forms.Label();
-            this.lblBanhang = new System.Windows.Forms.Label();
-            this.lblThietlap = new System.Windows.Forms.Label();
-            this.lblHethong = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();*/
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel2.SuspendLayout();
@@ -135,6 +127,7 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(634, 295);
             this.flpTable.TabIndex = 2;
+            this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
             // 
             // txbTotalPrice
             // 
@@ -159,7 +152,7 @@
             this.btnSwithTable.TabIndex = 7;
             this.btnSwithTable.Text = "Chuyển Bàn";
             this.btnSwithTable.UseVisualStyleBackColor = false;
-            this.btnSwithTable.Click += new System.EventHandler(this.btnSwithTable_Click);
+           // this.btnSwithTable.Click += new System.EventHandler(this.btnSwithTable_Click);
             // 
             // nmDisCount
             // 
@@ -391,103 +384,11 @@
             this.panel4.Size = new System.Drawing.Size(270, 608);
             this.panel4.TabIndex = 7;
             // 
-            // lblGiupdo
-            // 
-/*            this.lblGiupdo.AutoSize = true;
-            this.lblGiupdo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGiupdo.Location = new System.Drawing.Point(886, 6);
-            this.lblGiupdo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblGiupdo.Name = "lblGiupdo";
-            this.lblGiupdo.Size = new System.Drawing.Size(65, 17);
-            this.lblGiupdo.TabIndex = 22;
-            this.lblGiupdo.Text = "Giúp đớ";
-            // 
-            // lblBanhang
-            // 
-            this.lblBanhang.AutoSize = true;
-            this.lblBanhang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBanhang.Location = new System.Drawing.Point(751, 6);
-            this.lblBanhang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBanhang.Name = "lblBanhang";
-            this.lblBanhang.Size = new System.Drawing.Size(77, 17);
-            this.lblBanhang.TabIndex = 21;
-            this.lblBanhang.Text = "Bán hàng";
-            // 
-            // lblThietlap
-            // 
-            this.lblThietlap.AutoSize = true;
-            this.lblThietlap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThietlap.Location = new System.Drawing.Point(620, 6);
-            this.lblThietlap.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblThietlap.Name = "lblThietlap";
-            this.lblThietlap.Size = new System.Drawing.Size(72, 17);
-            this.lblThietlap.TabIndex = 20;
-            this.lblThietlap.Text = "Thiết lập";
-            // 
-            // lblHethong
-            // 
-            this.lblHethong.AutoSize = true;
-            this.lblHethong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHethong.Location = new System.Drawing.Point(512, 4);
-            this.lblHethong.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHethong.Name = "lblHethong";
-            this.lblHethong.Size = new System.Drawing.Size(74, 17);
-            this.lblHethong.TabIndex = 19;
-            this.lblHethong.Text = "Hệ thống";
-            // 
-            // button4
-            // 
-            this.button4.Image = global::QuanLiCH.Properties.Resources.Help_icon;
-            this.button4.Location = new System.Drawing.Point(851, 0);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 27);
-            this.button4.TabIndex = 18;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Image = global::QuanLiCH.Properties.Resources.payment_icon;
-            this.button3.Location = new System.Drawing.Point(722, 0);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 27);
-            this.button3.TabIndex = 17;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Image = global::QuanLiCH.Properties.Resources.Office_icon;
-            this.button2.Location = new System.Drawing.Point(589, 0);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(26, 27);
-            this.button2.TabIndex = 16;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Image = global::QuanLiCH.Properties.Resources.Apps_system_software_update_icon;
-            this.button1.Location = new System.Drawing.Point(476, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 27);
-            this.button1.TabIndex = 15;
-            this.button1.UseVisualStyleBackColor = true;*/
-            // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 637);
-/*            this.Controls.Add(this.lblGiupdo);
-            this.Controls.Add(this.lblBanhang);
-            this.Controls.Add(this.lblThietlap);
-            this.Controls.Add(this.lblHethong);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);*/
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.txbTotalPrice);

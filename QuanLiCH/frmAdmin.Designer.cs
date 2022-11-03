@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnMenu = new System.Windows.Forms.Panel();
-            this.btnReport = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnCategory = new System.Windows.Forms.Button();
             this.btnFood = new System.Windows.Forms.Button();
@@ -54,7 +53,6 @@
             // pnMenu
             // 
             this.pnMenu.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.pnMenu.Controls.Add(this.btnReport);
             this.pnMenu.Controls.Add(this.btnAccount);
             this.pnMenu.Controls.Add(this.btnCategory);
             this.pnMenu.Controls.Add(this.btnFood);
@@ -65,23 +63,6 @@
             this.pnMenu.Name = "pnMenu";
             this.pnMenu.Size = new System.Drawing.Size(128, 577);
             this.pnMenu.TabIndex = 0;
-            // 
-            // btnReport
-            // 
-            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReport.FlatAppearance.BorderSize = 0;
-            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(0, 328);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(128, 60);
-            this.btnReport.TabIndex = 7;
-            this.btnReport.Text = "Report";
-            this.btnReport.UseVisualStyleBackColor = false;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnAccount
             // 
@@ -286,7 +267,6 @@
         private System.Windows.Forms.Button btnFood;
         private System.Windows.Forms.Panel pnLogo;
         private System.Windows.Forms.Button btnAccount;
-        private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Panel pnTitleBar;
         private System.Windows.Forms.Label lbTitleBar;
         private System.Windows.Forms.Panel pnDesktopPane;

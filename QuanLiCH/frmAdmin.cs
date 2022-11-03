@@ -50,32 +50,13 @@ namespace QuanLiCH
             {
                 if(currentButton != (Button)btnSender)
                 {
-                    DisableButton();
-                    Color color = SelectThemeColor();
-                    currentButton = (Button)btnSender;
-                    currentButton.BackColor = color;
-                    currentButton.ForeColor=Color.White;
+                    currentButton = (Button)btnSender; 
                     currentButton.Font= new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    pnTitleBar.BackColor = color;
-                    pnLogo.BackColor = ThemeColor.ChangeColorBrightness(color,-0.3);
-                    ThemeColor.PrimaryColor = color;
-                    ThemeColor.SecondaryyColor = ThemeColor.ChangeColorBrightness(color,-0.3);
                     btnCloseChillForm.Enabled = true;
                 }    
             }    
         }
-        private void DisableButton()
-        {
-            foreach(Control previousBtn in pnMenu.Controls)
-                {
-                if(previousBtn.GetType()==typeof(Button))
-                {
-                    previousBtn.BackColor=Color.FromArgb(135,206,250);
-                    previousBtn.ForeColor=Color.Gainsboro;
-                    previousBtn.Font= new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                }    
-            }
-        }
+       
         private void OpenChildForm(Form childForm,object btnSender)
         {
             if(activeForm != null)
@@ -118,11 +99,7 @@ namespace QuanLiCH
             OpenChildForm(new Admin.frmAccount(), sender);
         }
 
-        private void btnReport_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender);
-        }
-
+  
         private void btnCloseChillForm_Click(object sender, EventArgs e)
         {
             if(activeForm != null)
@@ -132,10 +109,8 @@ namespace QuanLiCH
 
         private void Reset()
         {
-           DisableButton();
+           //DisableButton();
             lbTitleBar.Text ="HOME" ;
-            pnTitleBar.BackColor = Color.FromArgb(0,150,136);
-            pnLogo.BackColor = Color.FromArgb(39,39,58);
             currentButton=null;
             btnCloseChillForm.Enabled = false;
         }

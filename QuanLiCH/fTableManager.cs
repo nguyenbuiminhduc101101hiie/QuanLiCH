@@ -63,20 +63,10 @@ namespace QuanLiCH
             foreach (Table item in tablelist)
             {
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight }; 
-                btn.Text = item.Name + Environment.NewLine+item.Status; 
+                btn.Text = item.Name + Environment.NewLine+"price: "+ item.Price + Environment.NewLine+"SL còn: " +item.Quantity; 
 
                 btn.Click += Btn_Click;
                 btn.Tag = item;
-
-                switch (item.Status)
-                {
-                    case "Trống":
-                        btn.BackColor = Color.LightSeaGreen; 
-                        break;
-                    default:
-                        btn.BackColor = Color.Red; 
-                        break;
-                }
 
                 flpTable.Controls.Add(btn);
             }    
@@ -274,18 +264,18 @@ namespace QuanLiCH
                 }
             }
         }
-        private void btnSwithTable_Click(object sender, EventArgs e)
-        {
-            int id1 = (lsvBill.Tag as Table).ID;
+        //private void btnSwithTable_Click(object sender, EventArgs e)
+        //{
+        //    int id1 = (lsvBill.Tag as Table).ID;
 
-            int id2 = (cbSwithTable.SelectedItem as Table).ID;
-            if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as Table).Name, (cbSwithTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-            {
-                TableDAO.Instance.SwitchTable(id1, id2);
+        //    int id2 = (cbSwithTable.SelectedItem as Table).ID;
+        //    if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as Table).Name, (cbSwithTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+        //    {
+        //        TableDAO.Instance.SwitchTable(id1, id2);
 
-                LoadTable();
-            }
-        }
+        //        LoadTable();
+        //    }
+        //}
 
         #endregion
 
@@ -307,5 +297,9 @@ namespace QuanLiCH
 
         }
 
+        private void flpTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

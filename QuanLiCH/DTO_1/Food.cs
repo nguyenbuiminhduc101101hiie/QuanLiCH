@@ -19,7 +19,7 @@ namespace QuanLiCH.DTO_1
 
         private int quantity;
 
-        public Food(int id,string name, int categoryid,float price)
+        public Food(int id,string name, int categoryid,float price,int quantity)
         {
             this.ID = id;
             this.Name = name;
@@ -33,7 +33,10 @@ namespace QuanLiCH.DTO_1
             this.Name = row["name"].ToString();
             this.CategoryID = (int)row["idcategory"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
+           
             this.Quantity = (int)row["quantity"];
+          
+            
         }
         public int ID { get => iD; set => iD = value; }
         public string Name { get => name; set => name = value; }
