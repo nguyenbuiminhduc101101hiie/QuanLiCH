@@ -33,7 +33,7 @@ namespace QuanLiCH
         //[DllImport("user32.DLL", EntryPoint = "SendMessage")]
         //private extern static void SendMessage(System.IntPtr hwnd,int wMsg,int wParam,int lParam);
 
-        private Color SelectThemeColor()
+/*        private Color SelectThemeColor()
         {
             int index = random.Next(ThemeColor.ColorList.Count);
             while(tempIndex == index)
@@ -43,7 +43,7 @@ namespace QuanLiCH
             tempIndex = index;
             string color = ThemeColor.ColorList[index];
             return ColorTranslator.FromHtml(color);
-        }
+        }*/
         private void ActivateButton(object btnSender)
         {
             if(btnSender != null)
@@ -144,19 +144,6 @@ namespace QuanLiCH
             lbHello.Left += 10;
         }
 
-        private void lbHello_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pnTitleBar_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void frmAdmin_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

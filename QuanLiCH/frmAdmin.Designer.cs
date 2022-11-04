@@ -154,7 +154,6 @@
             this.pnTitleBar.Name = "pnTitleBar";
             this.pnTitleBar.Size = new System.Drawing.Size(925, 60);
             this.pnTitleBar.TabIndex = 1;
-            this.pnTitleBar.Paint += new System.Windows.Forms.PaintEventHandler(this.pnTitleBar_Paint);
             // 
             // btnExit
             // 
@@ -171,7 +170,7 @@
             // 
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMaximize.Image = global::QuanLiCH.Properties.Resources.software_shape_rectangle_98272__1_1;
-            this.btnMaximize.Location = new System.Drawing.Point(693, 6);
+            this.btnMaximize.Location = new System.Drawing.Point(699, 6);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(28, 29);
             this.btnMaximize.TabIndex = 2;
@@ -182,7 +181,7 @@
             // 
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMinimize.Image = global::QuanLiCH.Properties.Resources.minimize_118918;
-            this.btnMinimize.Location = new System.Drawing.Point(657, 3);
+            this.btnMinimize.Location = new System.Drawing.Point(657, 6);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(30, 29);
             this.btnMinimize.TabIndex = 2;
@@ -233,7 +232,6 @@
             this.lbHello.Size = new System.Drawing.Size(550, 65);
             this.lbHello.TabIndex = 0;
             this.lbHello.Text = "Welcome to Coffee store";
-            this.lbHello.Click += new System.EventHandler(this.lbHello_Click);
             // 
             // timer2
             // 
@@ -249,8 +247,7 @@
             this.Controls.Add(this.pnTitleBar);
             this.Controls.Add(this.pnMenu);
             this.Name = "frmAdmin";
-            this.Text = "frmAdmin";
-            this.Load += new System.EventHandler(this.frmAdmin_Load);
+            this.Text = "Admin Manage";
             this.pnMenu.ResumeLayout(false);
             this.pnTitleBar.ResumeLayout(false);
             this.pnTitleBar.PerformLayout();
