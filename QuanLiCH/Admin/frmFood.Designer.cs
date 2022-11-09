@@ -52,6 +52,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.nmFoodQuantity = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbUnit = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvFood)).BeginInit();
             this.panel4.SuspendLayout();
             this.pnFoodCategory.SuspendLayout();
@@ -301,11 +302,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Số Lượng :";
             // 
+            // cbUnit
+            // 
+            this.cbUnit.FormattingEnabled = true;
+            this.cbUnit.Items.AddRange(new object[] {
+            "Kg",
+            "Lon",
+            "Cái"});
+            this.cbUnit.Location = new System.Drawing.Point(699, 118);
+            this.cbUnit.Name = "cbUnit";
+            this.cbUnit.Size = new System.Drawing.Size(92, 21);
+            this.cbUnit.TabIndex = 8;
+            // 
             // frmFood
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 415);
+            this.Controls.Add(this.cbUnit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnFoodPrice);
             this.Controls.Add(this.btnDelete);
@@ -365,5 +379,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.NumericUpDown nmFoodQuantity;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbUnit;
     }
 }

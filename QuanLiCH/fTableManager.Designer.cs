@@ -123,6 +123,7 @@
             // flpTable
             // 
             this.flpTable.AutoScroll = true;
+            this.flpTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpTable.Location = new System.Drawing.Point(276, 58);
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(634, 295);
@@ -152,7 +153,6 @@
             this.btnSwithTable.TabIndex = 7;
             this.btnSwithTable.Text = "Chuyển Bàn";
             this.btnSwithTable.UseVisualStyleBackColor = false;
-           // this.btnSwithTable.Click += new System.EventHandler(this.btnSwithTable_Click);
             // 
             // nmDisCount
             // 

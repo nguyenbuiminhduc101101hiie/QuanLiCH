@@ -42,12 +42,10 @@
             this.btnCloseChillForm = new System.Windows.Forms.Button();
             this.lbTitleBar = new System.Windows.Forms.Label();
             this.pnDesktopPane = new System.Windows.Forms.Panel();
-            this.lbHello = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnMenu.SuspendLayout();
             this.pnTitleBar.SuspendLayout();
-            this.pnDesktopPane.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnMenu
@@ -215,28 +213,14 @@
             // pnDesktopPane
             // 
             this.pnDesktopPane.BackgroundImage = global::QuanLiCH.Properties.Resources._1455739720_Kitchen_Bold_Line_Color_Mix_28_icon_icons_com_53404__1_;
-            this.pnDesktopPane.Controls.Add(this.lbHello);
             this.pnDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnDesktopPane.Location = new System.Drawing.Point(128, 60);
             this.pnDesktopPane.Name = "pnDesktopPane";
             this.pnDesktopPane.Size = new System.Drawing.Size(925, 517);
             this.pnDesktopPane.TabIndex = 2;
             // 
-            // lbHello
-            // 
-            this.lbHello.AutoSize = true;
-            this.lbHello.Font = new System.Drawing.Font("Nirmala UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHello.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lbHello.Location = new System.Drawing.Point(128, 184);
-            this.lbHello.Name = "lbHello";
-            this.lbHello.Size = new System.Drawing.Size(550, 65);
-            this.lbHello.TabIndex = 0;
-            this.lbHello.Text = "Welcome to Coffee store";
-            // 
             // timer2
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // frmAdmin
             // 
@@ -251,8 +235,6 @@
             this.pnMenu.ResumeLayout(false);
             this.pnTitleBar.ResumeLayout(false);
             this.pnTitleBar.PerformLayout();
-            this.pnDesktopPane.ResumeLayout(false);
-            this.pnDesktopPane.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,7 +253,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Label lbHello;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button btnBill;

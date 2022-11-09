@@ -139,11 +139,6 @@ namespace QuanLiCH
             this.Close();
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            lbHello.Left += 10;
-        }
-
 
     }
 }

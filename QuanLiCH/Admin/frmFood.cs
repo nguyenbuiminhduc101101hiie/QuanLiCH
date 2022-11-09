@@ -57,6 +57,8 @@ namespace QuanLiCH.Admin
             txbFoodID.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "ID", true, DataSourceUpdateMode.Never));
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
             nmFoodQuantity.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Quantity", true, DataSourceUpdateMode.Never));
+            cbUnit.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Unit", true, DataSourceUpdateMode.Never));
+
         }
 
         void LoadListFood()
@@ -80,7 +82,9 @@ namespace QuanLiCH.Admin
             int categoryID = (cbFoodCategory.SelectedItem as Category).ID;
             float price = (float)nmFoodPrice.Value;
             int quantity = (int)nmFoodQuantity.Value;
-            
+            string unit = (string)cbUnit.Text;
+
+
 
             if (FoodDAO.Instance.InsertFood(name, categoryID, price,quantity))
             {
@@ -102,6 +106,7 @@ namespace QuanLiCH.Admin
             float price = (float)nmFoodPrice.Value;
             int id = Convert.ToInt32(txbFoodID.Text);
             int quantity = (int)nmFoodQuantity.Value;
+            string unit = (string)cbUnit.Text;
 
             if (FoodDAO.Instance.UpdateFood(id, name, categoryID, price,quantity))
             {
@@ -120,7 +125,7 @@ namespace QuanLiCH.Admin
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txbFoodID.Text);
-
+           
             if (FoodDAO.Instance.DeleteFood(id))
             {
                 MessageBox.Show("Xóa món thành công");
