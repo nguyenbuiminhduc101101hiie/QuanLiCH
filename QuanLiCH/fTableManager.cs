@@ -106,8 +106,6 @@ namespace QuanLiCH
 
         #endregion
 
-
-
         #region Events
         private void Btn_Click(object sender, EventArgs e)
         {
@@ -294,11 +292,6 @@ namespace QuanLiCH
             this.Close();
             fLogin f = new fLogin();
             f.ShowDialog();
-
-        }
-
-        private void flpTable_Paint(object sender, PaintEventArgs e)
-        {
 
         }
     }

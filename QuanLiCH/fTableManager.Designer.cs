@@ -128,7 +128,6 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(634, 295);
             this.flpTable.TabIndex = 2;
-            this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
             // 
             // txbTotalPrice
             // 
