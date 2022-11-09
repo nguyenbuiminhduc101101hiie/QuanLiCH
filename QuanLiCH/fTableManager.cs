@@ -218,7 +218,7 @@ namespace QuanLiCH
            
             if (table == null)
             {
-                MessageBox.Show("Hãy chọn bàn");
+                MessageBox.Show("Hãy chọn gì đó trước khi thêm số lượng");
                 return;
             }
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);

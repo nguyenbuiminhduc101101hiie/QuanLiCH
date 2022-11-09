@@ -86,7 +86,7 @@ namespace QuanLiCH.Admin
 
 
 
-            if (FoodDAO.Instance.InsertFood(name, categoryID, price,quantity))
+            if (FoodDAO.Instance.InsertFood(name, categoryID, price,quantity,unit))
             {
                 MessageBox.Show("Thêm món thành công");
                 LoadListFood();
@@ -108,7 +108,7 @@ namespace QuanLiCH.Admin
             int quantity = (int)nmFoodQuantity.Value;
             string unit = (string)cbUnit.Text;
 
-            if (FoodDAO.Instance.UpdateFood(id, name, categoryID, price,quantity))
+            if (FoodDAO.Instance.UpdateFood(id, name, categoryID, price,quantity, unit))
             {
                 MessageBox.Show("Sửa món thành công");
                 LoadListFood();

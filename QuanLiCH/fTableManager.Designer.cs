@@ -252,7 +252,7 @@
             this.btnAddFood.Name = "btnAddFood";
             this.btnAddFood.Size = new System.Drawing.Size(97, 25);
             this.btnAddFood.TabIndex = 2;
-            this.btnAddFood.Text = "Thêm Món";
+            this.btnAddFood.Text = "Số Lượng";
             this.btnAddFood.UseVisualStyleBackColor = false;
             this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
@@ -311,7 +311,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 25);
             this.label8.TabIndex = 11;
-            this.label8.Text = "Giảm giá";
+            this.label8.Text = "Giảm Giá";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
