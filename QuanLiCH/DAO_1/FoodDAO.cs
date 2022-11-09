@@ -68,20 +68,20 @@ namespace QuanLiCH.DAO_1
             }
             return list;
         }
-        public DataTable LoadRenameFood(int id,int idCategory,string name,float price, int quantity)
+        public DataTable LoadRenameFood(int id,int idCategory,string name,float price, int quantity, string unit)
         {
-            return DataProvider.Instance.ExecuteQuery("exec CREATE PROC USP_LoadRenameFood@id , @idCategory , @name , @price ,@quantity ", new object[] { id,idCategory,name,price,quantity });
+            return DataProvider.Instance.ExecuteQuery("exec CREATE PROC USP_LoadRenameFood@id , @idCategory , @name , @price ,@quantity ,@unit ", new object[] { id,idCategory,name,price,quantity,unit });
         }
-        public bool InsertFood(string name,int id,float price,int quantity)
+        public bool InsertFood(string name,int id,float price,int quantity, string unit)
         {
-            string query = string.Format("INSERT dbo.Food ( name, idCategory, price , quantity )VALUES  ( N'{0}', {1}, {2},{3})", name, id, price,quantity);
+            string query = string.Format("INSERT dbo.Food ( name, idCategory, price , quantity ,unit )VALUES  ( N'{0}', {1}, {2},{3},N'{4}')", name, id, price,quantity,unit);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
         }
-        public bool UpdateFood(int idFood, string name, int id, float price, int quantity)
+        public bool UpdateFood(int idFood, string name, int id, float price, int quantity, string unit)
         {
-            string query = string.Format("UPDATE dbo.Food SET name = N'{0}', idCategory = {1}, price = {2} ,quantity ={3} WHERE id = {4}", name, id, price,quantity, idFood);
+            string query = string.Format("UPDATE dbo.Food SET name = N'{0}', idCategory = {1}, price = {2} ,quantity ={3} ,unit =N'{4}' WHERE id = {5}", name, id, price,quantity,unit, idFood);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
