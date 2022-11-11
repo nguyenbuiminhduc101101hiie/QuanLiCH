@@ -20,16 +20,16 @@ namespace QuanLiCH.DTO_1
 
         private int quantity;
 
-        private string unit;
+ 
 
-        public Table(int id, string name, int idcategory, float price, int quantity , string unit)
+        public Table(int id, string name, int idcategory, float price, int quantity)
         {
             this.ID = id;
             this.Name = name;
             this.Idcategory = idcategory;
             this.Price = price;
             this.Quantity = quantity;
-            this.Unit = unit;
+           
         }
         public Table(DataRow row)
         {
@@ -38,7 +38,7 @@ namespace QuanLiCH.DTO_1
             this.Idcategory = (int)row["idcategory"];
             this.Price = (float)Convert.ToDouble(row["price"].ToString());
             this.Quantity = (int)row["quantity"];
-            this.Unit = row["unit"].ToString();
+      
 
         }
         public int ID { get => iD; set => iD = value; }
@@ -47,7 +47,6 @@ namespace QuanLiCH.DTO_1
         public float Price { get => price; set => price = value; }
         public int Quantity { get => quantity; set => quantity = value; }
 
-        public string Unit { get => unit; set => unit = value; }
     }
 }
 

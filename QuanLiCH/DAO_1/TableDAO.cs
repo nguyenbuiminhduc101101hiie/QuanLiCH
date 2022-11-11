@@ -27,24 +27,24 @@ namespace QuanLiCH.DAO_1
         //{
         //    DataProvider.Instance.ExecuteQuery("USP_SwitchTabel @idTable1 , @idTabel2", new object[] { id1, id2 });
         //}
-        public List<Table>  LoadTableList() // Tạo đanh sách bàn ăn
+        public List<Food>  LoadTableList() // Tạo đanh sách bàn ăn
         {
-            List<Table> tableList = new List<Table>();
+            List<Food> tableList = new List<Food>();
             string query1 = "Select * From Food";
 
             DataTable data = DataProvider.Instance.ExecuteQuery(query1);
 
             foreach (DataRow item in data.Rows)
             {
-                Table table = new Table(item);
+                Food table = new Food(item);
                 tableList.Add(table);
             }
 
             return tableList;
         }
-        public List<Table> GetListTabble()
+        public List<Food> GetListTabble()
         {
-            List<Table> list = new List<Table>();
+            List<Food> list = new List<Food>();
 
             string query = "Select * From Food";
 
@@ -52,7 +52,7 @@ namespace QuanLiCH.DAO_1
 
             foreach (DataRow item in data.Rows)
             {
-                Table table = new Table(item);
+                Food table = new Food(item);
                 list.Add(table);
             }
 

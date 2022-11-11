@@ -13,7 +13,9 @@ using QuanLiCH.DTO_1;
 using static QuanLiCH.fAccoutProfile1;
 
 namespace QuanLiCH
+    
 {
+   
     public partial class fTableManager : Form
     {
         private Account loginAccount;
@@ -59,11 +61,11 @@ namespace QuanLiCH
         void LoadTable()
         {   
             flpTable.Controls.Clear();
-            List<Table> tablelist = TableDAO.Instance.LoadTableList(); 
-            foreach (Table item in tablelist)
+            List<Food> tablelist = TableDAO.Instance.LoadTableList(); 
+            foreach (Food item in tablelist)
             {
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight }; 
-                btn.Text = item.Name + Environment.NewLine+"price: "+ item.Price + Environment.NewLine+"SL còn: " +item.Quantity; 
+                btn.Text = item.Name + Environment.NewLine+"price: "+ item.Price + Environment.NewLine+"SL còn: " +item.Quantity + Environment.NewLine + "ID :" +item.ID; 
 
                 btn.Click += Btn_Click;
                 btn.Tag = item;
@@ -73,7 +75,8 @@ namespace QuanLiCH
         }
         void ShowBill(int id)
         {
-            lsvBill.Items.Clear();
+            
+            //lsvBill.Items.Clear();
             List<QuanLiCH.DTO_1.Menu> listBillInfo = MenuDAO.Instance.GetlistMenuByTable(id);
 
             float totalPrice = 0;
@@ -94,6 +97,7 @@ namespace QuanLiCH
             txbTotalPrice.Text = totalPrice.ToString("c", culture);
 
         }
+    
         void LoadComboboxTable(ComboBox cb)
         {
             cb.DataSource = TableDAO.Instance.LoadTableList();
@@ -111,7 +115,7 @@ namespace QuanLiCH
         #region Events
         private void Btn_Click(object sender, EventArgs e)
         {
-            int tableID = ((sender as Button).Tag as Table).ID; // Tạo id Table
+            int tableID = ((sender as Button).Tag as Food).ID; // Tạo id Table
             lsvBill.Tag = (sender as Button).Tag;
             ShowBill(tableID);
         }
@@ -216,20 +220,24 @@ namespace QuanLiCH
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table;
-           
-            if (table == null)
+            Food food = lsvBill.Tag as Food;
+
+            //  Food food = FoodDAO.Instance.GetFoodByID(id);
+
+            if (food == null)
             {
-                MessageBox.Show("Hãy chọn bàn");
+                MessageBox.Show("Hãy Chọn Sản Phẩm");
                 return;
             }
-            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
-            int foodID = (cbFood.SelectedItem as Food).ID;
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
+            int foodID = food.ID;
+            //int foodID = FoodDAO.Instance.GetFoodByID();
             int count = (int)nmFoodCout.Value;
 
             if (idBill == -1)
             {
-                BillDAO.Instance.InserBill(table.ID);
+                //BillDAO.Instance.InserBill(table.ID);
+                BillDAO.Instance.InserBill(food.ID);
                 BillInfoDAO.Instance.InserBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
             }
             else
@@ -237,7 +245,7 @@ namespace QuanLiCH
                 BillInfoDAO.Instance.InserBillInfo(idBill, foodID, count);
             }
 
-            ShowBill(table.ID);
+            ShowBill(food.ID);
             LoadTable();
         }
 
@@ -245,9 +253,9 @@ namespace QuanLiCH
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table;
+            Food food = lsvBill.Tag as Food;
 
-            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+            int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
             int discount = (int)nmDisCount.Value;
 
             double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
@@ -255,27 +263,17 @@ namespace QuanLiCH
 
             if (idBill != -1)
             {
-                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho bàn {0}\nTổng tiền - (Tổng tiền / 100) x Giảm giá\n=> {1} - ({1} / 100) x {2} = {3}", table.Name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn Tổng tiền - (Tổng tiền / 100) x Giảm giá\n=> {0} - ({0} / 100) x {1} = {2}",  totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
-                    ShowBill(table.ID);
+                    ShowBill(food.ID);
 
                     LoadTable();
                 }
             }
+            lsvBill.Items.Clear();
         }
-        //private void btnSwithTable_Click(object sender, EventArgs e)
-        //{
-        //    int id1 = (lsvBill.Tag as Table).ID;
 
-        //    int id2 = (cbSwithTable.SelectedItem as Table).ID;
-        //    if (MessageBox.Show(string.Format("Bạn có thật sự muốn chuyển bàn {0} qua bàn {1}", (lsvBill.Tag as Table).Name, (cbSwithTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-        //    {
-        //        TableDAO.Instance.SwitchTable(id1, id2);
-
-        //        LoadTable();
-        //    }
-        //}
 
         #endregion
 
@@ -298,6 +296,11 @@ namespace QuanLiCH
         }
 
         private void flpTable_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lsvBill_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -9,17 +9,7 @@ namespace QuanLiCH.DTO_1
 {
    public class Food
     {
-         private int iD;
-
-        private string name;
-
-        private int categoryID;
-
-        private float price;
-
-        private int quantity;
-
-        private string unit;
+     
 
         public Food(int id,string name, int categoryid,float price,int quantity, string unit)
         {
@@ -41,6 +31,19 @@ namespace QuanLiCH.DTO_1
           
             
         }
+
+        private int iD;
+
+        private string name;
+
+        private int categoryID;
+
+        private float price;
+
+        private int quantity;
+
+        private string unit;
+
         public int ID { get => iD; set => iD = value; }
         public string Name { get => name; set => name = value; }
         public int CategoryID { get => categoryID; set => categoryID = value; }

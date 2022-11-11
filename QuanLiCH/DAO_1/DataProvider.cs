@@ -23,7 +23,7 @@ namespace QuanLyQuanCafe.DAO
 
 
 
-        private string connectionStr = @"Data Source=DESKTOP-NV89242;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
+        private string connectionStr = @"Data Source=LAPTOP-PHABNFOA\MINHDUC;Initial Catalog=QuanLyQuanCafe;Integrated Security=True";
 
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
