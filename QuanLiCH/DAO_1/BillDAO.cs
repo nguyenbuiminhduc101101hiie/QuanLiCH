@@ -31,7 +31,7 @@ namespace QuanLiCH.DAO_1
 
         public int GetUncheckBillIDByTableID(int id)
         {
-            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.bill WHERE idTable = " + id );
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.Bill WHERE idTable = " + id );
 
             if (data.Rows.Count > 0)
             {
@@ -46,13 +46,17 @@ namespace QuanLiCH.DAO_1
         {
             string query = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id;
             DataProvider.Instance.ExecuteNonQuery(query);
+            
+        }
+        public void ClearTB (int id)
+        {
+            DataProvider.Instance.ExecuteNonQuery("exec USP_DeleteIDTable @id", new object[] { id });
         }
         public void InserBill(int id)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { id });
         }
         
-
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
         {
             return DataProvider.Instance.ExecuteQuery("exec USP_GetListBillByDate @checkIn , @checkOut ", new object[] { checkIn, checkOut });

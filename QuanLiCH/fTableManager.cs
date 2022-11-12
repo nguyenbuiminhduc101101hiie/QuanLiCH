@@ -49,7 +49,6 @@ namespace QuanLiCH
             List<Category> listCategory = CategoryDAO.Instance.GetlistCategory();
             cbCategory.DataSource = listCategory;
             cbCategory.DisplayMember = "Name";
-
         }
         
         void LoadFoodListByCategoryID(int id)
@@ -107,10 +106,7 @@ namespace QuanLiCH
         {
             lbTime.Text = DateTime.Now.ToLongDateString() + "\n" + DateTime.Now.ToLongTimeString();
         }
-
         #endregion
-
-
 
         #region Events
         private void Btn_Click(object sender, EventArgs e)
@@ -254,10 +250,8 @@ namespace QuanLiCH
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             Food food = lsvBill.Tag as Food;
-
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
             int discount = (int)nmDisCount.Value;
-
             double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
             double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
@@ -266,15 +260,12 @@ namespace QuanLiCH
                 if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn Tổng tiền - (Tổng tiền / 100) x Giảm giá\n=> {0} - ({0} / 100) x {1} = {2}",  totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
-                    ShowBill(food.ID);
-
                     LoadTable();
+                    BillDAO.Instance.ClearTB(food.ID);
                 }
             }
             lsvBill.Items.Clear();
         }
-
-
         #endregion
 
         private void btnRename_Click(object sender, EventArgs e)
@@ -294,15 +285,9 @@ namespace QuanLiCH
             f.ShowDialog();
 
         }
-
-        private void flpTable_Paint(object sender, PaintEventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lsvBill_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            lsvBill.Items.Clear();
         }
     }
 }

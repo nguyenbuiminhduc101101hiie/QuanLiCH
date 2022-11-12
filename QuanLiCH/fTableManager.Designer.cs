@@ -60,6 +60,7 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel2.SuspendLayout();
@@ -128,7 +129,6 @@
             this.flpTable.Name = "flpTable";
             this.flpTable.Size = new System.Drawing.Size(634, 295);
             this.flpTable.TabIndex = 2;
-            this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
             // 
             // txbTotalPrice
             // 
@@ -206,7 +206,6 @@
             this.lsvBill.TabIndex = 0;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
-            this.lsvBill.SelectedIndexChanged += new System.EventHandler(this.lsvBill_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -285,7 +284,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(916, 80);
+            this.label5.Location = new System.Drawing.Point(916, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 15);
             this.label5.TabIndex = 8;
@@ -297,11 +296,11 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(935, 126);
+            this.label6.Location = new System.Drawing.Point(916, 130);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 15);
+            this.label6.Size = new System.Drawing.Size(73, 15);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Nước";
+            this.label6.Text = "Sản Phẩm";
             // 
             // label8
             // 
@@ -385,11 +384,25 @@
             this.panel4.Size = new System.Drawing.Size(270, 608);
             this.panel4.TabIndex = 7;
             // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.Black;
+            this.btnClear.Location = new System.Drawing.Point(428, 403);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(97, 25);
+            this.btnClear.TabIndex = 12;
+            this.btnClear.Text = "Hủy Đơn";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 637);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.txbTotalPrice);
@@ -455,13 +468,14 @@
         private System.Windows.Forms.Button btnRename;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel4;
-/*        private System.Windows.Forms.Label lblGiupdo;
-        private System.Windows.Forms.Label lblBanhang;
-        private System.Windows.Forms.Label lblThietlap;
-        private System.Windows.Forms.Label lblHethong;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;*/
+        private System.Windows.Forms.Button btnClear;
+        /*        private System.Windows.Forms.Label lblGiupdo;
+private System.Windows.Forms.Label lblBanhang;
+private System.Windows.Forms.Label lblThietlap;
+private System.Windows.Forms.Label lblHethong;
+private System.Windows.Forms.Button button4;
+private System.Windows.Forms.Button button3;
+private System.Windows.Forms.Button button2;
+private System.Windows.Forms.Button button1;*/
     }
 }

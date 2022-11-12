@@ -27,6 +27,7 @@ namespace QuanLiCH.DAO_1
         //{
         //    DataProvider.Instance.ExecuteQuery("USP_SwitchTabel @idTable1 , @idTabel2", new object[] { id1, id2 });
         //}
+        
         public List<Food>  LoadTableList() // Tạo đanh sách bàn ăn
         {
             List<Food> tableList = new List<Food>();
