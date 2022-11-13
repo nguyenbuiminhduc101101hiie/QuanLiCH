@@ -243,6 +243,7 @@
             0,
             0,
             0});
+            this.nmFoodCout.ValueChanged += new System.EventHandler(this.nmFoodCout_ValueChanged);
             // 
             // btnAddFood
             // 

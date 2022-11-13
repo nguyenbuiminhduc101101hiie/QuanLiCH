@@ -11,6 +11,7 @@ using System.Globalization;
 using QuanLiCH.DAO_1;
 using QuanLiCH.DTO_1;
 using static QuanLiCH.fAccoutProfile1;
+using System.Diagnostics;
 
 namespace QuanLiCH
     
@@ -60,7 +61,7 @@ namespace QuanLiCH
         void LoadTable()
         {   
             flpTable.Controls.Clear();
-            List<Food> tablelist = TableDAO.Instance.LoadTableList(); 
+            List<Food> tablelist = TableDAO.Instance.LoadFoodList(); 
             foreach (Food item in tablelist)
             {
                 Button btn = new Button() { Width = TableDAO.TableWidth, Height = TableDAO.TableHeight }; 
@@ -96,10 +97,35 @@ namespace QuanLiCH
             txbTotalPrice.Text = totalPrice.ToString("c", culture);
 
         }
-    
+
+        void ShowBillnoclear(int id)
+        {
+
+            //lsvBill.Items.Clear();
+            List<QuanLiCH.DTO_1.Menu> listBillInfo = MenuDAO.Instance.GetlistMenuByTable(id);
+
+            float totalPrice = 0;
+
+            foreach (QuanLiCH.DTO_1.Menu item in listBillInfo)
+            {
+                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
+                lsvItem.SubItems.Add(item.Count.ToString());
+                lsvItem.SubItems.Add(item.Price.ToString());
+                lsvItem.SubItems.Add(item.TotalPrice.ToString());
+                totalPrice += item.TotalPrice;
+                lsvBill.Items.Add(lsvItem);
+            }
+            CultureInfo culture = new CultureInfo("vi-VN"); // tạo culture ở vn
+
+            //Thread.CurrentThread.CurrentCulture = culture;
+
+            txbTotalPrice.Text = totalPrice.ToString("c", culture);
+
+        }
+
         void LoadComboboxTable(ComboBox cb)
         {
-            cb.DataSource = TableDAO.Instance.LoadTableList();
+            cb.DataSource = TableDAO.Instance.LoadFoodList();
             cb.DisplayMember = "Name";
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -111,9 +137,9 @@ namespace QuanLiCH
         #region Events
         private void Btn_Click(object sender, EventArgs e)
         {
-            int tableID = ((sender as Button).Tag as Food).ID; // Tạo id Table
+            int foodid = ((sender as Button).Tag as Food).ID; // Tạo id Table
             lsvBill.Tag = (sender as Button).Tag;
-            ShowBill(tableID);
+            //ShowBill(foodid);
         }
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -216,55 +242,105 @@ namespace QuanLiCH
 
         private void btnAddFood_Click(object sender, EventArgs e)
         {
+            //lsvBill.Items.Clear();
             Food food = lsvBill.Tag as Food;
 
-            //  Food food = FoodDAO.Instance.GetFoodByID(id);
+            float price = 0;
+            int quantity = 0;
 
             if (food == null)
             {
                 MessageBox.Show("Hãy Chọn Sản Phẩm");
                 return;
             }
+
+            List<Food> foodlist = FoodDAO.Instance.GetFoodByID(food.ID);
+            foreach (Food item in foodlist)
+            {
+                 price = item.Price;
+
+            }
+
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
             int foodID = food.ID;
-            //int foodID = FoodDAO.Instance.GetFoodByID();
+            int discount = (int)nmDisCount.Value;
             int count = (int)nmFoodCout.Value;
+            float totalPrice = price * count;
+            float finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
-            if (idBill == -1)
+            //trừ SL đã mua
+            BillDAO.Instance.deleteSLdamua(foodID, count);
+
+            // Lấy SL còn
+            List<Food> foodlist1 = FoodDAO.Instance.GetFoodByID(food.ID);
+            foreach (Food item in foodlist1)
             {
-                //BillDAO.Instance.InserBill(table.ID);
-                BillDAO.Instance.InserBill(food.ID);
-                BillInfoDAO.Instance.InserBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+                 quantity = item.Quantity;
+
+            }
+            if (quantity >= 0)
+            {
+                if (idBill == -1)
+                {
+                    BillDAO.Instance.InserBill(foodID, finalTotalPrice);
+                    BillInfoDAO.Instance.InserBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+                }
+                else
+                {
+                    BillInfoDAO.Instance.InserBillInfo(idBill, foodID, count);
+                }
+
+                ShowBill(food.ID);
+                LoadTable();
+                // BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
             }
             else
             {
-                BillInfoDAO.Instance.InserBillInfo(idBill, foodID, count);
+                MessageBox.Show("Sản Phẩm Không Còn Hàng");
             }
 
-            ShowBill(food.ID);
-            LoadTable();
+
         }
 
-      
 
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             Food food = lsvBill.Tag as Food;
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
-            int discount = (int)nmDisCount.Value;
-            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
-            double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
+           //// int discount = (int)nmDisCount.Value;
+           ////// float 
+           //// double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
+           //// double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
+            //double finalTotalPrice=0;
+
+
 
             if (idBill != -1)
             {
-                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn Tổng tiền - (Tổng tiền / 100) x Giảm giá\n=> {0} - ({0} / 100) x {1} = {2}",  totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                List<Bill> billlist = BillDAO.Instance.GetlistBill();
+                float totalprice1 = 0;
+                if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn "), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                   
                 {
-                    BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
-                    LoadTable();
-                    BillDAO.Instance.ClearTB(food.ID);
+                    foreach (Bill item in billlist)
+                    {
+                        BillDAO.Instance.CheckOut(item.ID, item.Discount, item.TotalPrice);
+
+                        totalprice1 += item.TotalPrice;
+                      
+                    }
+                    MessageBox.Show("Tổng Số Tiền Phải Thanh Toán là :" + totalprice1);
+
+
+                    //LoadTable();
+                    //BillDAO.Instance.ClearTB(food.ID);
+                    BillDAO.Instance.Deletedulieubillìno();
+                    BillDAO.Instance.Deletedulieubill();
+                   
                 }
             }
             lsvBill.Items.Clear();
+
         }
         #endregion
 
@@ -288,6 +364,11 @@ namespace QuanLiCH
         private void btnClear_Click(object sender, EventArgs e)
         {
             lsvBill.Items.Clear();
+        }
+
+        private void nmFoodCout_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

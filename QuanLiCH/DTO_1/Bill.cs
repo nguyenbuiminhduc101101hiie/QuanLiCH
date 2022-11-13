@@ -9,14 +9,15 @@ namespace QuanLiCH.DTO_1
 {
   public class Bill
     {
-        public Bill(int id,DateTime? dateCheckIn,DateTime? dateCheckOut,int status,int discount)
+        public Bill(int id,DateTime? dateCheckIn,DateTime? dateCheckOut,int status,int discount,float totalprice)
         {
             this.ID = id;
             this.dateCheckIn = dateCheckIn;
             this.DateCheckOut = dateCheckOut;
             this.Status = status;
             this.Discount = discount;
-            
+            this.TotalPrice = totalprice;
+
         }
         public Bill(DataRow row)
         {
@@ -32,8 +33,16 @@ namespace QuanLiCH.DTO_1
             if (row["discount"].ToString() != "")
                 this.Discount = (int)row["discount"];
 
+            try
+            {
+                this.TotalPrice = (float)Convert.ToDouble(row["totalprice"].ToString());
+            }
+            catch { }
+           
+
         }
         private int status;
+        private float totalprice;
 
         private DateTime? dateCheckIn; // kiểu dữ liệu k cho null thêm ? để null
 
@@ -63,6 +72,14 @@ namespace QuanLiCH.DTO_1
             get => status; 
             set => status = value; 
         }
+
+      
         public int Discount { get => discount; set => discount = value; }
+
+        public float TotalPrice
+        {
+            get => totalprice;
+            set => totalprice = value;
+        }
     }
 }

@@ -55,6 +55,7 @@ namespace QuanLiCH.DAO_1
             return list;
         }
 
+
         public List<Food> GetListFood()
         {
             List<Food> list = new List<Food>();

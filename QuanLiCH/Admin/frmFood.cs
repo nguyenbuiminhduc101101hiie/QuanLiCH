@@ -127,18 +127,23 @@ namespace QuanLiCH.Admin
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txbFoodID.Text);
-           
-            if (FoodDAO.Instance.DeleteFood(id))
+
+            if (MessageBox.Show(string.Format("Bạn có chắc thanh xóa dòng dữ liệu này"), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+
             {
-                MessageBox.Show("Xóa món thành công");
-                LoadListFood();
-                if (deleteFood != null)
-                    deleteFood(this, new EventArgs());
+                if (FoodDAO.Instance.DeleteFood(id))
+                {
+                    MessageBox.Show("Xóa món thành công");
+                    LoadListFood();
+                    if (deleteFood != null)
+                        deleteFood(this, new EventArgs());
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi khi xóa thức ăn");
+                }
             }
-            else
-            {
-                MessageBox.Show("Có lỗi khi xóa thức ăn");
-            }
+               
         }
 
         private event EventHandler insertFood;

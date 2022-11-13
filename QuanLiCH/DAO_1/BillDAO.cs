@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 using QuanLiCH.DTO_1;
 using QuanLyQuanCafe.DAO;
 
@@ -42,19 +43,82 @@ namespace QuanLiCH.DAO_1
             return -1;
         }
 
-        public void CheckOut(int id, int discount, float totalPrice)
+        public List<Bill> GetlistBill()
         {
-            string query = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id;
+            List<Bill> listBill = new List<Bill>();
+            //string query1 = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id;
+
+            string query = "SELECT * from dbo.bill";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Bill bill = new Bill(item);
+
+                listBill.Add(bill);
+
+            }
+
+            return listBill;
+        }
+
+        public int Deletedulieubill()
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("Delete FROM dbo.Bill" );
+
+            if (data.Rows.Count > 0)
+            {
+                Bill bill = new Bill(data.Rows[0]);
+                return bill.ID;
+            }
+
+            return -1;
+        }
+
+        public int Deletedulieubillìno()
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("Delete FROM dbo.Billinfo");
+            if (data.Rows.Count > 0)
+            {
+                Bill bill = new Bill(data.Rows[0]);
+                return bill.ID;
+            }
+
+            return -1;
+        }
+
+        public void deleteSLdamua(int id,int count)
+        {
+            DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity - " + count +"where id = " +id);
+        }
+
+        public void CheckOut(int id, int discount, float totalPrice )
+        {
+          
+            string query = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id ;
             DataProvider.Instance.ExecuteNonQuery(query);
+            //string query1 = "SELECT * from dbo.bill";
+            //List<Bill> listBill = new List<Bill>();
+            //DataTable data = DataProvider.Instance.ExecuteQuery(query1);
+            //foreach (DataRow item in data.Rows)
+            //{
+            //    Bill bill = new Bill(item);
+
+            //    listBill.Add(bill);
+
+            //}
+            //GetlistBill();
+
+
             
         }
-        public void ClearTB (int id)
+        //public void ClearTB (int id)
+        //{
+        //    DataProvider.Instance.ExecuteNonQuery("exec USP_DeleteIDTable @id", new object[] { id });
+        //}
+        public void InserBill(int id , float totalPrice)
         {
-            DataProvider.Instance.ExecuteNonQuery("exec USP_DeleteIDTable @id", new object[] { id });
-        }
-        public void InserBill(int id)
-        {
-            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable", new object[] { id });
+            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
         }
         
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
