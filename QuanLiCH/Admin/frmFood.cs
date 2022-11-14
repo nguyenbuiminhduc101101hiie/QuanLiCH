@@ -84,8 +84,6 @@ namespace QuanLiCH.Admin
             int quantity = (int)nmFoodQuantity.Value;
             string unit = (string)cbUnit.Text;
 
-
-
             if (FoodDAO.Instance.InsertFood(name, categoryID, price,quantity,unit))
             {
                 MessageBox.Show("Thêm món thành công");
@@ -195,7 +193,6 @@ namespace QuanLiCH.Admin
             }
             catch { }
         }
-
         private void btnSreachFood_Click_1(object sender, EventArgs e)
         {
             foodList.DataSource = SearchFoodByName(txbSreachFoodName.Text);

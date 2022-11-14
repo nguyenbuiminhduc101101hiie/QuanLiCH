@@ -72,6 +72,7 @@ namespace QuanLiCH
                 flpTable.Controls.Add(btn);
             }    
         }
+
         void ShowBill(int id)
         {
             
@@ -268,7 +269,7 @@ namespace QuanLiCH
             float finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
             //trừ SL đã mua
-            BillDAO.Instance.deleteSLdamua(foodID, count);
+            BillDAO.Instance.deleteSLdamua(count, foodID);
 
             // Lấy SL còn
             List<Food> foodlist1 = FoodDAO.Instance.GetFoodByID(food.ID);
@@ -309,18 +310,18 @@ namespace QuanLiCH
         {
             Food food = lsvBill.Tag as Food;
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
-           //// int discount = (int)nmDisCount.Value;
-           ////// float 
-           //// double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
-           //// double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
+            //// int discount = (int)nmDisCount.Value;
+            ////// float 
+            //// double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
+            //// double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
             //double finalTotalPrice=0;
 
 
-
+            float totalprice = 0;
             if (idBill != -1)
             {
                 List<Bill> billlist = BillDAO.Instance.GetlistBill();
-                float totalprice = 0;
+                
                 if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn "), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                    
                 {
@@ -329,10 +330,9 @@ namespace QuanLiCH
                         BillDAO.Instance.CheckOut(item.ID, item.Discount, item.TotalPrice);
 
                         totalprice += item.TotalPrice;
-                     
-                    }
-                    MessageBox.Show("Tổng Số Tiền Phải Thanh Toán là :" + totalprice);
 
+                    }     
+                    MessageBox.Show("Tổng Số Tiền Phải Thanh Toán là :" + totalprice);
 
                     //LoadTable();
                     //BillDAO.Instance.ClearTB(food.ID);

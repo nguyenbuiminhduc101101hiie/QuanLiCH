@@ -42,7 +42,7 @@ namespace QuanLiCH.DAO_1
 
             return -1;
         }
-
+      
         public List<Bill> GetlistBill()
         {
             List<Bill> listBill = new List<Bill>();
@@ -61,7 +61,6 @@ namespace QuanLiCH.DAO_1
 
             return listBill;
         }
-
         public int Deletedulieubill()
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("Delete FROM dbo.Bill" );
@@ -98,14 +97,17 @@ namespace QuanLiCH.DAO_1
             DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity + " + count + "where id = " + id);
 
         }
-
-
+        public void InsertProfit(float totalPrice)
+        {
+            DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.Profit SET DatePurchase = GETDATE(), " + "TotalPrice = " + totalPrice);
+        }
         public void CheckOut(int id, int discount, float totalPrice )
         {
           
             string query = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id ;
             DataProvider.Instance.ExecuteNonQuery(query);
-            //DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.BillPrint SET DateCheckOut = GETDATE(), " + "TotalPrice = " + totalPrice);
+            InsertProfit(totalPrice);
+            
             //string query1 = "SELECT * from dbo.bill";
             //List<Bill> listBill = new List<Bill>();
             //DataTable data = DataProvider.Instance.ExecuteQuery(query1);
@@ -125,10 +127,14 @@ namespace QuanLiCH.DAO_1
         //{
         //    DataProvider.Instance.ExecuteNonQuery("exec USP_DeleteIDTable @id", new object[] { id });
         //}
+        public void InsertProfit(string product, int quantity, float totalPrice)
+        {
+            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertProfit @totalPrice", new object[] { product, quantity, totalPrice });
+        }
         public void InserBill(int id , float totalPrice)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
-            //DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillPrint @totalPrice", new object[] { totalPrice });
+           
         }
         
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
