@@ -370,5 +370,16 @@ namespace QuanLiCH
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadTable();
+       
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

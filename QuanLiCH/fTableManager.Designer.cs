@@ -36,9 +36,7 @@
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
             this.txbTotalPrice = new System.Windows.Forms.TextBox();
-            this.btnSwithTable = new System.Windows.Forms.Button();
             this.nmDisCount = new System.Windows.Forms.NumericUpDown();
-            this.cbSwithTable = new System.Windows.Forms.ComboBox();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lsvBill = new System.Windows.Forms.ListView();
@@ -48,11 +46,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.nmFoodCout = new System.Windows.Forms.NumericUpDown();
             this.btnAddFood = new System.Windows.Forms.Button();
-            this.cbFood = new System.Windows.Forms.ComboBox();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -60,7 +54,13 @@
             this.btnRename = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbFood = new System.Windows.Forms.ComboBox();
+            this.cbSwithTable = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel2.SuspendLayout();
@@ -142,18 +142,6 @@
             this.txbTotalPrice.Text = "0";
             this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnSwithTable
-            // 
-            this.btnSwithTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.btnSwithTable.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSwithTable.ForeColor = System.Drawing.Color.Black;
-            this.btnSwithTable.Location = new System.Drawing.Point(843, 367);
-            this.btnSwithTable.Name = "btnSwithTable";
-            this.btnSwithTable.Size = new System.Drawing.Size(97, 25);
-            this.btnSwithTable.TabIndex = 7;
-            this.btnSwithTable.Text = "Chuyển Bàn";
-            this.btnSwithTable.UseVisualStyleBackColor = false;
-            // 
             // nmDisCount
             // 
             this.nmDisCount.Location = new System.Drawing.Point(946, 410);
@@ -161,14 +149,6 @@
             this.nmDisCount.Size = new System.Drawing.Size(217, 20);
             this.nmDisCount.TabIndex = 6;
             this.nmDisCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // cbSwithTable
-            // 
-            this.cbSwithTable.FormattingEnabled = true;
-            this.cbSwithTable.Location = new System.Drawing.Point(946, 370);
-            this.cbSwithTable.Name = "cbSwithTable";
-            this.cbSwithTable.Size = new System.Drawing.Size(218, 21);
-            this.cbSwithTable.TabIndex = 5;
             // 
             // btnCheckOut
             // 
@@ -258,50 +238,9 @@
             this.btnAddFood.UseVisualStyleBackColor = false;
             this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
             // 
-            // cbFood
-            // 
-            this.cbFood.FormattingEnabled = true;
-            this.cbFood.Location = new System.Drawing.Point(1004, 126);
-            this.cbFood.Name = "cbFood";
-            this.cbFood.Size = new System.Drawing.Size(161, 21);
-            this.cbFood.TabIndex = 1;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(1004, 80);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(161, 21);
-            this.cbCategory.TabIndex = 0;
-            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(916, 82);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 15);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Danh Mục";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(916, 130);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 15);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Sản Phẩm";
             // 
             // label8
             // 
@@ -376,6 +315,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.btnLogout);
             this.panel4.Controls.Add(this.btnRename);
             this.panel4.Controls.Add(this.panel6);
@@ -384,6 +324,19 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(270, 608);
             this.panel4.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(10, 246);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(250, 45);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnClear
             // 
@@ -398,6 +351,55 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(1004, 80);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(161, 21);
+            this.cbCategory.TabIndex = 0;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(916, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 15);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Danh Mục";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(916, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 15);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Sản Phẩm";
+            // 
+            // cbFood
+            // 
+            this.cbFood.FormattingEnabled = true;
+            this.cbFood.Location = new System.Drawing.Point(1004, 126);
+            this.cbFood.Name = "cbFood";
+            this.cbFood.Size = new System.Drawing.Size(161, 21);
+            this.cbFood.TabIndex = 1;
+            // 
+            // cbSwithTable
+            // 
+            this.cbSwithTable.Location = new System.Drawing.Point(0, 0);
+            this.cbSwithTable.Name = "cbSwithTable";
+            this.cbSwithTable.Size = new System.Drawing.Size(121, 21);
+            this.cbSwithTable.TabIndex = 13;
+            // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,7 +410,6 @@
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.txbTotalPrice);
             this.Controls.Add(this.nmDisCount);
-            this.Controls.Add(this.btnSwithTable);
             this.Controls.Add(this.cbSwithTable);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -445,23 +446,17 @@
         private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flpTable;
         private System.Windows.Forms.NumericUpDown nmDisCount;
-        private System.Windows.Forms.ComboBox cbSwithTable;
         private System.Windows.Forms.Button btnCheckOut;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListView lsvBill;
         private System.Windows.Forms.NumericUpDown nmFoodCout;
         private System.Windows.Forms.Button btnAddFood;
-        private System.Windows.Forms.ComboBox cbFood;
-        private System.Windows.Forms.ComboBox cbCategory;
-        private System.Windows.Forms.Button btnSwithTable;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.TextBox txbTotalPrice;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel6;
@@ -470,6 +465,12 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbFood;
+        private System.Windows.Forms.ComboBox cbSwithTable;
         /*        private System.Windows.Forms.Label lblGiupdo;
 private System.Windows.Forms.Label lblBanhang;
 private System.Windows.Forms.Label lblThietlap;
