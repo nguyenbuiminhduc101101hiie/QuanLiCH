@@ -277,7 +277,7 @@ namespace QuanLiCH
                  quantity = item.Quantity;
 
             }
-            if (quantity >= 0)
+            if (quantity  >= 0)
             {
                 if (idBill == -1)
                 {
@@ -295,7 +295,10 @@ namespace QuanLiCH
             }
             else
             {
-                MessageBox.Show("Sản Phẩm Không Còn Hàng");
+                MessageBox.Show("Sản Phẩm Không Còn Đủ Hàng");
+
+                BillDAO.Instance.PlusSLDamua(foodID, count);
+                LoadTable();
             }
 
 

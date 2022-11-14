@@ -90,7 +90,15 @@ namespace QuanLiCH.DAO_1
         public void deleteSLdamua(int id,int count)
         {
             DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity - " + count +"where id = " +id);
+            
         }
+
+        public void PlusSLDamua(int id, int count)
+        {
+            DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity + " + count + "where id = " + id);
+
+        }
+
 
         public void CheckOut(int id, int discount, float totalPrice )
         {
@@ -120,7 +128,7 @@ namespace QuanLiCH.DAO_1
         public void InserBill(int id , float totalPrice)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
-            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillPrint @totalPrice", new object[] { totalPrice });
+            //DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillPrint @totalPrice", new object[] { totalPrice });
         }
         
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
