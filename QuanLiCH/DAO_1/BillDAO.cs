@@ -75,7 +75,7 @@ namespace QuanLiCH.DAO_1
             return -1;
         }
 
-        public int Deletedulieubillìno()
+        public int Deletedulieubillinfo()
         {
             DataTable data = DataProvider.Instance.ExecuteQuery("Delete FROM dbo.Billinfo");
             if (data.Rows.Count > 0)
@@ -97,6 +97,7 @@ namespace QuanLiCH.DAO_1
           
             string query = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id ;
             DataProvider.Instance.ExecuteNonQuery(query);
+            //DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.BillPrint SET DateCheckOut = GETDATE(), " + "TotalPrice = " + totalPrice);
             //string query1 = "SELECT * from dbo.bill";
             //List<Bill> listBill = new List<Bill>();
             //DataTable data = DataProvider.Instance.ExecuteQuery(query1);
@@ -110,7 +111,7 @@ namespace QuanLiCH.DAO_1
             //GetlistBill();
 
 
-            
+
         }
         //public void ClearTB (int id)
         //{
@@ -119,6 +120,7 @@ namespace QuanLiCH.DAO_1
         public void InserBill(int id , float totalPrice)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
+            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBillPrint @totalPrice", new object[] { totalPrice });
         }
         
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)

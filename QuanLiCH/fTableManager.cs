@@ -34,7 +34,6 @@ namespace QuanLiCH
             timer1.Start();
             LoadTable();
             LoadCategory();
-            LoadComboboxTable(cbSwithTable);
             
         }
 
@@ -318,7 +317,7 @@ namespace QuanLiCH
             if (idBill != -1)
             {
                 List<Bill> billlist = BillDAO.Instance.GetlistBill();
-                float totalprice1 = 0;
+                float totalprice = 0;
                 if (MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn "), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                    
                 {
@@ -326,15 +325,15 @@ namespace QuanLiCH
                     {
                         BillDAO.Instance.CheckOut(item.ID, item.Discount, item.TotalPrice);
 
-                        totalprice1 += item.TotalPrice;
-                      
+                        totalprice += item.TotalPrice;
+                     
                     }
-                    MessageBox.Show("Tổng Số Tiền Phải Thanh Toán là :" + totalprice1);
+                    MessageBox.Show("Tổng Số Tiền Phải Thanh Toán là :" + totalprice);
 
 
                     //LoadTable();
                     //BillDAO.Instance.ClearTB(food.ID);
-                    BillDAO.Instance.Deletedulieubillìno();
+                    BillDAO.Instance.Deletedulieubillinfo();
                     BillDAO.Instance.Deletedulieubill();
                    
                 }
@@ -349,10 +348,7 @@ namespace QuanLiCH
             fAccoutProfile1 f = new fAccoutProfile1(loginAccount);
 /*            this.Hide();*/
             f.ShowDialog();
-           
-
         }
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -366,18 +362,13 @@ namespace QuanLiCH
             lsvBill.Items.Clear();
         }
 
-        private void nmFoodCout_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             LoadTable();
        
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void fTableManager_Load(object sender, EventArgs e)
         {
 
         }

@@ -60,7 +60,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbFood = new System.Windows.Forms.ComboBox();
-            this.cbSwithTable = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).BeginInit();
             this.panel2.SuspendLayout();
@@ -127,7 +126,7 @@
             this.flpTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flpTable.Location = new System.Drawing.Point(276, 58);
             this.flpTable.Name = "flpTable";
-            this.flpTable.Size = new System.Drawing.Size(634, 295);
+            this.flpTable.Size = new System.Drawing.Size(887, 295);
             this.flpTable.TabIndex = 2;
             // 
             // txbTotalPrice
@@ -223,7 +222,6 @@
             0,
             0,
             0});
-            this.nmFoodCout.ValueChanged += new System.EventHandler(this.nmFoodCout_ValueChanged);
             // 
             // btnAddFood
             // 
@@ -371,7 +369,6 @@
             this.label5.Size = new System.Drawing.Size(72, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "Danh Mục";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -393,13 +390,6 @@
             this.cbFood.Size = new System.Drawing.Size(161, 21);
             this.cbFood.TabIndex = 1;
             // 
-            // cbSwithTable
-            // 
-            this.cbSwithTable.Location = new System.Drawing.Point(0, 0);
-            this.cbSwithTable.Name = "cbSwithTable";
-            this.cbSwithTable.Size = new System.Drawing.Size(121, 21);
-            this.cbSwithTable.TabIndex = 13;
-            // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,21 +400,17 @@
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.txbTotalPrice);
             this.Controls.Add(this.nmDisCount);
-            this.Controls.Add(this.cbSwithTable);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.nmFoodCout);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.btnAddFood);
-            this.Controls.Add(this.cbFood);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.flpTable);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "fTableManager";
             this.Text = "Quản Lí Kho";
+            this.Load += new System.EventHandler(this.fTableManager_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).EndInit();
@@ -470,7 +456,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbFood;
-        private System.Windows.Forms.ComboBox cbSwithTable;
         /*        private System.Windows.Forms.Label lblGiupdo;
 private System.Windows.Forms.Label lblBanhang;
 private System.Windows.Forms.Label lblThietlap;
