@@ -93,7 +93,7 @@ namespace QuanLiCH.DAO_1
         }
         public bool InsertFood(string name,int id,float price,int quantity, string unit)
         {
-            string query = string.Format("INSERT dbo.Food ( name, idCategory, price , quantity ,unit )VALUES  ( N'{0}', {1}, {2},{3},N'{4}')", name, id, price,quantity,unit);
+            string query = string.Format("INSERT dbo.Food (name, idCategory, price , quantity ,unit )VALUES  ( N'{0}', {1}, {2},{3},N'{4}')", name, id, price,quantity,unit);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
@@ -114,8 +114,28 @@ namespace QuanLiCH.DAO_1
 
             return result > 0;
         }
+        public void InsertProductProfit(int idBill, int idFood)
+        {
+            DataProvider.Instance.ExecuteQuery("UPDATE dbo.Profit SET ProductName = N'" + GetNameFoodByID(idFood) + "' where idBill = " + idBill);
+        }
+        public string GetNameFoodByID(int idFood)
+        {
+            List<string> list = new List<string>();
 
-       
+            string query = ("Select * from Food where id = " + idFood);
+            string result = "Space";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Food food = new Food(item);
+                list.Add(food.Name);
+                 result = food.Name;
+            }
+
+            return result;
+        }
+
     }
 
 }

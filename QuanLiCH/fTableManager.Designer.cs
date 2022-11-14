@@ -410,7 +410,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "fTableManager";
             this.Text = "Quản Lí Kho";
-            this.Load += new System.EventHandler(this.fTableManager_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDisCount)).EndInit();

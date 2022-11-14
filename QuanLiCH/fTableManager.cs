@@ -98,36 +98,36 @@ namespace QuanLiCH
 
         }
 
-        void ShowBillnoclear(int id)
-        {
+        //void ShowBillnoclear(int id)
+        //{
 
-            //lsvBill.Items.Clear();
-            List<QuanLiCH.DTO_1.Menu> listBillInfo = MenuDAO.Instance.GetlistMenuByTable(id);
+        //    lsvBill.Items.Clear();
+        //    List<QuanLiCH.DTO_1.Menu> listBillInfo = MenuDAO.Instance.GetlistMenuByTable(id);
 
-            float totalPrice = 0;
+        //    float totalPrice = 0;
 
-            foreach (QuanLiCH.DTO_1.Menu item in listBillInfo)
-            {
-                ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
-                lsvItem.SubItems.Add(item.Count.ToString());
-                lsvItem.SubItems.Add(item.Price.ToString());
-                lsvItem.SubItems.Add(item.TotalPrice.ToString());
-                totalPrice += item.TotalPrice;
-                lsvBill.Items.Add(lsvItem);
-            }
-            CultureInfo culture = new CultureInfo("vi-VN"); // tạo culture ở vn
+        //    foreach (QuanLiCH.DTO_1.Menu item in listBillInfo)
+        //    {
+        //        ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
+        //        lsvItem.SubItems.Add(item.Count.ToString());
+        //        lsvItem.SubItems.Add(item.Price.ToString());
+        //        lsvItem.SubItems.Add(item.TotalPrice.ToString());
+        //        totalPrice += item.TotalPrice;
+        //        lsvBill.Items.Add(lsvItem);
+        //    }
+        //    CultureInfo culture = new CultureInfo("vi-VN"); // tạo culture ở vn
 
-            //Thread.CurrentThread.CurrentCulture = culture;
+        //    Thread.CurrentThread.CurrentCulture = culture;
 
-            txbTotalPrice.Text = totalPrice.ToString("c", culture);
+        //    txbTotalPrice.Text = totalPrice.ToString("c", culture);
 
-        }
+        //}
 
-        void LoadComboboxTable(ComboBox cb)
-        {
-            cb.DataSource = TableDAO.Instance.LoadFoodList();
-            cb.DisplayMember = "Name";
-        }
+        //void LoadComboboxTable(ComboBox cb)
+        //{
+        //    cb.DataSource = TableDAO.Instance.LoadFoodList();
+        //    cb.DisplayMember = "Name";
+        //}
         private void timer1_Tick(object sender, EventArgs e)
         {
             lbTime.Text = DateTime.Now.ToLongDateString() + "\n" + DateTime.Now.ToLongTimeString();
@@ -141,6 +141,7 @@ namespace QuanLiCH
             lsvBill.Tag = (sender as Button).Tag;
             //ShowBill(foodid);
         }
+
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -239,7 +240,7 @@ namespace QuanLiCH
 
             LoadFoodListByCategoryID(id);
         }
-
+        public int finalcout = 0;
         private void btnAddFood_Click(object sender, EventArgs e)
         {
             //lsvBill.Items.Clear();
@@ -267,10 +268,10 @@ namespace QuanLiCH
             int count = (int)nmFoodCout.Value;
             float totalPrice = price * count;
             float finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
-
+            finalcout = finalcout + count;
             //trừ SL đã mua
-            BillDAO.Instance.deleteSLdamua(count, foodID);
-
+            BillDAO.Instance.deleteSLdamua(foodID, count);
+           
             // Lấy SL còn
             List<Food> foodlist1 = FoodDAO.Instance.GetFoodByID(food.ID);
             foreach (Food item in foodlist1)
@@ -278,12 +279,16 @@ namespace QuanLiCH
                  quantity = item.Quantity;
 
             }
+            
             if (quantity  >= 0)
             {
                 if (idBill == -1)
                 {
                     BillDAO.Instance.InserBill(foodID, finalTotalPrice);
+
                     BillInfoDAO.Instance.InserBillInfo(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+                    
+
                 }
                 else
                 {
@@ -293,30 +298,22 @@ namespace QuanLiCH
                 ShowBill(food.ID);
                 LoadTable();
                 // BillDAO.Instance.CheckOut(idBill, discount, (float)finalTotalPrice);
+                
             }
             else
             {
                 MessageBox.Show("Sản Phẩm Không Còn Đủ Hàng");
-
                 BillDAO.Instance.PlusSLDamua(foodID, count);
                 LoadTable();
             }
-
-
         }
 
-
+        
         private void btnCheckOut_Click(object sender, EventArgs e)
         {
             Food food = lsvBill.Tag as Food;
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(food.ID);
-            //// int discount = (int)nmDisCount.Value;
-            ////// float 
-            //// double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
-            //// double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
-            //double finalTotalPrice=0;
-
-
+            
             float totalprice = 0;
             if (idBill != -1)
             {
@@ -328,21 +325,19 @@ namespace QuanLiCH
                     foreach (Bill item in billlist)
                     {
                         BillDAO.Instance.CheckOut(item.ID, item.Discount, item.TotalPrice);
-
                         totalprice += item.TotalPrice;
-
                     }     
                     MessageBox.Show("Tổng Số Tiền Phải Thanh Toán là :" + totalprice);
 
                     //LoadTable();
-                    //BillDAO.Instance.ClearTB(food.ID);
                     BillDAO.Instance.Deletedulieubillinfo();
                     BillDAO.Instance.Deletedulieubill();
-                   
+                    BillDAO.Instance.InsertpriceProfit(BillDAO.Instance.GetMaxIDProfit(), totalprice);
+                    FoodDAO.Instance.InsertProductProfit(BillDAO.Instance.GetMaxIDProfit(), food.ID);
+                    BillDAO.Instance.InsertquantityProfit(BillDAO.Instance.GetMaxIDProfit(), finalcout);
                 }
             }
             lsvBill.Items.Clear();
-
         }
         #endregion
 
@@ -358,22 +353,15 @@ namespace QuanLiCH
             this.Close();
             fLogin f = new fLogin();
             f.ShowDialog();
-
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
             lsvBill.Items.Clear();
+            txbTotalPrice.Text = "0";
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             LoadTable();
-       
-        }
-
-        private void fTableManager_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

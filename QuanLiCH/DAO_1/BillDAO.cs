@@ -85,28 +85,29 @@ namespace QuanLiCH.DAO_1
 
             return -1;
         }
-
         public void deleteSLdamua(int id,int count)
         {
             DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity - " + count +"where id = " +id);
             
         }
-
         public void PlusSLDamua(int id, int count)
         {
             DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity + " + count + "where id = " + id);
-
+            
         }
-        public void InsertProfit(float totalPrice)
+        public void InsertpriceProfit(int idbill, float totalPrice)
         {
-            DataProvider.Instance.ExecuteNonQuery("UPDATE dbo.Profit SET DatePurchase = GETDATE(), " + "TotalPrice = " + totalPrice);
+            DataProvider.Instance.ExecuteQuery("exec USP_InsertProfit @idbill , @total", new object[] { idbill, totalPrice });
+        }
+        public void InsertquantityProfit(int idbill, int count)
+        {
+            DataProvider.Instance.ExecuteNonQuery("exec USP_UpdateQuantityProfit @idbill , @quantity", new object[] { idbill, count });
         }
         public void CheckOut(int id, int discount, float totalPrice )
         {
           
             string query = "UPDATE dbo.Bill SET dateCheckOut = GETDATE(), " + "discount = " + discount + ", totalPrice = " + totalPrice + " WHERE id = " + id ;
             DataProvider.Instance.ExecuteNonQuery(query);
-            InsertProfit(totalPrice);
             
             //string query1 = "SELECT * from dbo.bill";
             //List<Bill> listBill = new List<Bill>();
@@ -120,21 +121,12 @@ namespace QuanLiCH.DAO_1
             //}
             //GetlistBill();
 
-
-
         }
-        //public void ClearTB (int id)
-        //{
-        //    DataProvider.Instance.ExecuteNonQuery("exec USP_DeleteIDTable @id", new object[] { id });
-        //}
-        public void InsertProfit(string product, int quantity, float totalPrice)
-        {
-            DataProvider.Instance.ExecuteNonQuery("exec USP_InsertProfit @totalPrice", new object[] { product, quantity, totalPrice });
-        }
+       
         public void InserBill(int id , float totalPrice)
         {
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
-           
+
         }
         
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
@@ -160,8 +152,19 @@ namespace QuanLiCH.DAO_1
                 return 1;
             }
         }
+        public int GetMaxIDProfit()
+        {
+            try
+            {
+                return (int)DataProvider.Instance.ExecuteScalar("SELECT MAX(id) FROM dbo.Profit");
+            }
+            catch
+            {
+                return 1;
+            }
+        }
 
-       
+
     }
 
 }
