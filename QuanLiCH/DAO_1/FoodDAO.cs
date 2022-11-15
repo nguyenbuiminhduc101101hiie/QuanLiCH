@@ -55,7 +55,6 @@ namespace QuanLiCH.DAO_1
             return list;
         }
 
-
         public List<Food> GetListFood()
         {
             List<Food> list = new List<Food>();
@@ -132,10 +131,7 @@ namespace QuanLiCH.DAO_1
                 list.Add(food.Name);
                  result = food.Name;
             }
-
             return result;
         }
-
     }
-
 }

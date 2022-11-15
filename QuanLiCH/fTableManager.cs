@@ -333,8 +333,8 @@ namespace QuanLiCH
                     BillDAO.Instance.Deletedulieubillinfo();
                     BillDAO.Instance.Deletedulieubill();
                     BillDAO.Instance.InsertpriceProfit(BillDAO.Instance.GetMaxIDProfit(), totalprice);
-                    FoodDAO.Instance.InsertProductProfit(BillDAO.Instance.GetMaxIDProfit(), food.ID);
-                    BillDAO.Instance.InsertquantityProfit(BillDAO.Instance.GetMaxIDProfit(), finalcout);
+                    FoodDAO.Instance.InsertProductProfit(BillDAO.Instance.GetMaxIDProfit()-1, food.ID);
+                    BillDAO.Instance.InsertquantityProfit(BillDAO.Instance.GetMaxIDProfit()-1, finalcout);
                 }
             }
             lsvBill.Items.Clear();
