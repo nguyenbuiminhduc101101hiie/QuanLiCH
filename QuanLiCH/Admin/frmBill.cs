@@ -27,7 +27,8 @@ namespace QuanLiCH.Admin
         }
         void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
         {
-            dtgvBill.DataSource = BillDAO.Instance.GetListBillByDate(checkIn, checkOut);
+            //dtgvBill.DataSource = BillDAO.Instance.GetListBillByDate(checkIn, checkOut);
+            dtgvBill.DataSource = BillDAO.Instance.GetlistBill();
         }
 
 

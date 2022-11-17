@@ -113,9 +113,9 @@ namespace QuanLiCH.DAO_1
 
             return result > 0;
         }
-        public void InsertProductProfit(int idBill, int idFood)
+        public void InsertProductProfit(int idFood, float totalPrice)
         {
-            DataProvider.Instance.ExecuteQuery("UPDATE dbo.Profit SET ProductName = N'" + GetNameFoodByID(idFood) + "' where idBill = " + idBill);
+            DataProvider.Instance.ExecuteQuery("UPDATE dbo.Profit SET ProductName = N'" + GetNameFoodByID(idFood) + "' WHERE TotalPrice = " + totalPrice);
         }
         public string GetNameFoodByID(int idFood)
         {

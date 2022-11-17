@@ -99,9 +99,9 @@ namespace QuanLiCH.DAO_1
         {
             DataProvider.Instance.ExecuteQuery("exec USP_InsertProfit @idbill , @total", new object[] { idbill, totalPrice });
         }
-        public void InsertquantityProfit(int idbill, int quantity  )
+        public void InsertquantityProfit(int quantity, string productname)
         {
-            DataProvider.Instance.ExecuteQuery("exec USP_UpdateQuantityProfit @idbill , @quantity", new object[] { idbill, quantity });
+            DataProvider.Instance.ExecuteQuery("UPDATE dbo.Profit SET Quantity = " + quantity + "WHERE ProductName = N'" + productname + "'");
         }
         public void CheckOut(int id, int discount, float totalPrice )
         {
@@ -128,7 +128,10 @@ namespace QuanLiCH.DAO_1
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
 
         }
-        
+        public DataTable GetlistProfit()
+        {
+            return DataProvider.Instance.ExecuteQuery(" SELECT * from dbo.Profit");
+        }
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
         {
             return DataProvider.Instance.ExecuteQuery("exec USP_GetListBillByDate @checkIn , @checkOut ", new object[] { checkIn, checkOut });
