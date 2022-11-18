@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLiCH.DAO_1;
+using QuanLiCH.DTO_1;
 
 namespace QuanLiCH.Admin
 {
@@ -17,7 +19,9 @@ namespace QuanLiCH.Admin
         {
             InitializeComponent();
             LoadDateTimePickerBill();
-            LoadListBillByDate(dtgkFromDate.Value, dtgkToDate.Value);
+            dtgvBill.DataSource = ProfitDAO.Instance.Loadlistprofit();
+            txttotalprofit.Text = ProfitDAO.Instance.Loadtotalprofit();
+            //LoadListBillByDate(dtgkFromDate.Value, dtgkToDate.Value);
         }
         void LoadDateTimePickerBill()
         {
@@ -27,15 +31,12 @@ namespace QuanLiCH.Admin
         }
         void LoadListBillByDate(DateTime checkIn, DateTime checkOut)
         {
-            //dtgvBill.DataSource = BillDAO.Instance.GetListBillByDate(checkIn, checkOut);
-            dtgvBill.DataSource = BillDAO.Instance.GetlistBill();
-        }
+
+            dtgvBill.DataSource = ProfitDAO.Instance.GetlistProfit(checkIn,checkOut);
 
 
-        private void btnViewBill_Click(object sender, EventArgs e)
-        {
-            LoadListBillByDate(dtgkFromDate.Value, dtgkToDate.Value);
         }
+
 
         private void btnFristBillPage_Click(object sender, EventArgs e)
         {
@@ -78,6 +79,14 @@ namespace QuanLiCH.Admin
                 }
                 txbPageBill.Text = LastPage.ToString();
             }
+        }
+
+        private void btnBillwiew_Click(object sender, EventArgs e)
+        {
+
+            LoadListBillByDate(dtgkFromDate.Value, dtgkToDate.Value);
+
+
         }
     }
 }

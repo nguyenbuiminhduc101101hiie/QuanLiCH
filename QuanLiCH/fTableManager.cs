@@ -347,7 +347,7 @@ namespace QuanLiCH
                     i = 0;
                 }
             }
-            //lsvBill.Items.Clear();
+            lsvBill.Items.Clear();
         }
         #endregion
 

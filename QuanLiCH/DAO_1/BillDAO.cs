@@ -85,6 +85,8 @@ namespace QuanLiCH.DAO_1
 
             return -1;
         }
+
+
         public void deleteSLdamua(int id,int count)
         {
             DataProvider.Instance.ExecuteQuery("UPDATE dbo.Food SET quantity = quantity - " + count +" where id = " +id);
@@ -128,10 +130,8 @@ namespace QuanLiCH.DAO_1
             DataProvider.Instance.ExecuteNonQuery("exec USP_InsertBill @idTable , @totalPrice ", new object[] { id, totalPrice });
 
         }
-        public DataTable GetlistProfit()
-        {
-            return DataProvider.Instance.ExecuteQuery(" SELECT * from dbo.Profit");
-        }
+       
+        
         public DataTable GetListBillByDate(DateTime checkIn, DateTime checkOut)
         {
             return DataProvider.Instance.ExecuteQuery("exec USP_GetListBillByDate @checkIn , @checkOut ", new object[] { checkIn, checkOut });

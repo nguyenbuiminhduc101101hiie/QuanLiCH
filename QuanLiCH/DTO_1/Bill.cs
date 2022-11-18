@@ -38,9 +38,8 @@ namespace QuanLiCH.DTO_1
                 this.TotalPrice = (float)Convert.ToDouble(row["totalprice"].ToString());
             }
             catch { }
-           
-
         }
+
         private int status;
         private float totalprice;
 

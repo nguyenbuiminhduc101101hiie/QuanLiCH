@@ -271,6 +271,7 @@
     <Compile Include="DAO_1\AccountDAO.cs" />
     <Compile Include="DAO_1\FoodDAO.cs" />
     <Compile Include="DAO_1\MenuDAO.cs" />
+    <Compile Include="DAO_1\ProfitDAO.cs" />
     <Compile Include="DAO_1\TableDAO.cs" />
     <Compile Include="DTO_1\Account.cs" />
     <Compile Include="DTO_1\Bill.cs" />
@@ -278,6 +279,7 @@
     <Compile Include="DTO_1\Category.cs" />
     <Compile Include="DTO_1\Food.cs" />
     <Compile Include="DTO_1\Menu.cs" />
+    <Compile Include="DTO_1\Profit.cs" />
     <Compile Include="DTO_1\Table.cs" />
     <Compile Include="fAccoutProfile1.cs">
       <SubType>Form</SubType>

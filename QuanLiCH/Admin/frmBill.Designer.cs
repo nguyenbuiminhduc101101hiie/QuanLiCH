@@ -38,12 +38,15 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnLast = new System.Windows.Forms.Button();
             this.txbPageBill = new System.Windows.Forms.TextBox();
+            this.txttotalprofit = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.panel12.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgvBill
             // 
+            this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(78, 62);
             this.dtgvBill.Name = "dtgvBill";
@@ -58,7 +61,7 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(720, 31);
+            this.panel12.Size = new System.Drawing.Size(1034, 31);
             this.panel12.TabIndex = 2;
             // 
             // dtgkToDate
@@ -83,6 +86,7 @@
             this.btnBillwiew.TabIndex = 0;
             this.btnBillwiew.Text = "Doanh Thu";
             this.btnBillwiew.UseVisualStyleBackColor = true;
+            this.btnBillwiew.Click += new System.EventHandler(this.btnBillwiew_Click);
             // 
             // btnFristBillPage
             // 
@@ -134,11 +138,29 @@
             this.txbPageBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txbPageBill.TextChanged += new System.EventHandler(this.txbPageBill_TextChanged);
             // 
+            // txttotalprofit
+            // 
+            this.txttotalprofit.Location = new System.Drawing.Point(756, 59);
+            this.txttotalprofit.Name = "txttotalprofit";
+            this.txttotalprofit.Size = new System.Drawing.Size(152, 20);
+            this.txttotalprofit.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(692, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Total Profit";
+            // 
             // frmBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 469);
+            this.ClientSize = new System.Drawing.Size(1034, 469);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txttotalprofit);
             this.Controls.Add(this.txbPageBill);
             this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnNext);
@@ -167,5 +189,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.TextBox txbPageBill;
+        private System.Windows.Forms.TextBox txttotalprofit;
+        private System.Windows.Forms.Label label1;
     }
 }
