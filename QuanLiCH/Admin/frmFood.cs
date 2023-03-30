@@ -35,9 +35,9 @@ namespace QuanLiCH.Admin
                     btn.BackColor = Color.FromArgb(135, 206, 250);
                     btn.ForeColor = Color.Gainsboro;
                     btn.FlatAppearance.BorderColor = ThemeColor.SecondaryyColor;
+                    //change some code
                 }
-                lb1.ForeColor=ThemeColor.SecondaryyColor;
-                
+                lb1.ForeColor=ThemeColor.SecondaryyColor;  
             }
         }
         List<Food> SearchFoodByName(string name)
@@ -58,7 +58,6 @@ namespace QuanLiCH.Admin
             nmFoodPrice.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Price", true, DataSourceUpdateMode.Never));
             nmFoodQuantity.DataBindings.Add(new Binding("Value", dtgvFood.DataSource, "Quantity", true, DataSourceUpdateMode.Never));
             cbUnit.DataBindings.Add(new Binding("Text", dtgvFood.DataSource, "Unit", true, DataSourceUpdateMode.Never));
-
         }
 
         void LoadListFood()
